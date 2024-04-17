@@ -1,0 +1,14 @@
+{
+  "packageName": "sdk-ebay-rest-marketing",
+  "composerVendorName": "macropage",
+  "composerProjectName": "sdk-ebay-rest-marketing",
+  "artifactVersion": "1.21.0",
+  "invokerPackage": "macropage\\SDKs\\ebay\\rest\\marketing",
+  "modelPackage": "Model",
+  "apiPackage": "API",
+  "variableNamingConvention": "camelCase",
+  "srcBasePath": "src",
+  "gitUserId": "macropage",
+  "gitRepoId": "sdk-ebay-rest-marketing",
+  "validateSpec": false
+}
