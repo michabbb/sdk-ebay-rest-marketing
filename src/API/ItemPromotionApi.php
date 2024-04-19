@@ -134,18 +134,16 @@ class ItemPromotionApi
     /**
      * Operation createItemPromotion
      *
-     * @param  string $contentType This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
-     * @param  \macropage\SDKs\ebay\rest\marketing\Model\ItemPromotion $itemPromotion This type defines the fields that describe an item promotion. (optional)
+     * @param  \macropage\SDKs\ebay\rest\marketing\Model\ItemPromotion|array $itemPromotion This type defines the fields that describe an item promotion. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createItemPromotion'] to see the possible values for this operation
      *
      * @throws \macropage\SDKs\ebay\rest\marketing\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \macropage\SDKs\ebay\rest\marketing\Model\BaseResponse
+     * @return array
      */
-    public function createItemPromotion($itemPromotion = null, string $contentType = self::contentTypes['createItemPromotion'][0])
+    public function createItemPromotion(ItemPromotion|array $itemPromotion = null, string $contentType = self::contentTypes['createItemPromotion'][0])
     {
-        list($response) = $this->createItemPromotionWithHttpInfo($contentType, $itemPromotion, $contentType);
-        return $response;
+        return $this->createItemPromotionWithHttpInfo($itemPromotion, $contentType);
     }
 
     /**
@@ -161,7 +159,7 @@ class ItemPromotionApi
      */
     public function createItemPromotionWithHttpInfo($itemPromotion = null, string $contentType = self::contentTypes['createItemPromotion'][0])
     {
-        $request = $this->createItemPromotionRequest($contentType, $itemPromotion, $contentType);
+        $request = $this->createItemPromotionRequest($itemPromotion, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
