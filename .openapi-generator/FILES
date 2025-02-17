@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .php-cs-fixer.dist.php
 .travis.yml
 README.md
@@ -138,6 +137,8 @@ docs/Model/RuleCriteria.md
 docs/Model/SelectedInventoryDiscount.md
 docs/Model/SelectionRule.md
 docs/Model/SuggestBudgetResponse.md
+docs/Model/SuggestMaxCpcRequest.md
+docs/Model/SuggestMaxCpcResponse.md
 docs/Model/SuggestedBids.md
 docs/Model/SuggestedKeywords.md
 docs/Model/SummaryReportResponse.md
@@ -304,6 +305,8 @@ src/Model/RuleCriteria.php
 src/Model/SelectedInventoryDiscount.php
 src/Model/SelectionRule.php
 src/Model/SuggestBudgetResponse.php
+src/Model/SuggestMaxCpcRequest.php
+src/Model/SuggestMaxCpcResponse.php
 src/Model/SuggestedBids.php
 src/Model/SuggestedKeywords.php
 src/Model/SummaryReportResponse.php
@@ -465,6 +468,8 @@ test/Model/RuleCriteriaTest.php
 test/Model/SelectedInventoryDiscountTest.php
 test/Model/SelectionRuleTest.php
 test/Model/SuggestBudgetResponseTest.php
+test/Model/SuggestMaxCpcRequestTest.php
+test/Model/SuggestMaxCpcResponseTest.php
 test/Model/SuggestedBidsTest.php
 test/Model/SuggestedKeywordsTest.php
 test/Model/SummaryReportResponseTest.php

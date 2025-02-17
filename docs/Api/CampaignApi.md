@@ -18,6 +18,7 @@ All URIs are relative to https://api.ebay.com/sell/marketing/v1, except if the o
 | [**setupQuickCampaign()**](CampaignApi.md#setupQuickCampaign) | **POST** /ad_campaign/setup_quick_campaign |  |
 | [**suggestBudget()**](CampaignApi.md#suggestBudget) | **GET** /ad_campaign/suggest_budget |  |
 | [**suggestItems()**](CampaignApi.md#suggestItems) | **GET** /ad_campaign/{campaign_id}/suggest_items |  |
+| [**suggestMaxCpc()**](CampaignApi.md#suggestMaxCpc) | **POST** /ad_campaign/suggest_max_cpc |  |
 | [**updateAdRateStrategy()**](CampaignApi.md#updateAdRateStrategy) | **POST** /ad_campaign/{campaign_id}/update_ad_rate_strategy |  |
 | [**updateBiddingStrategy()**](CampaignApi.md#updateBiddingStrategy) | **POST** /ad_campaign/{campaign_id}/update_bidding_strategy |  |
 | [**updateCampaignBudget()**](CampaignApi.md#updateCampaignBudget) | **POST** /ad_campaign/{campaign_id}/update_campaign_budget |  |
@@ -27,7 +28,7 @@ All URIs are relative to https://api.ebay.com/sell/marketing/v1, except if the o
 ## `cloneCampaign()`
 
 ```php
-cloneCampaign($campaignId, $contentType, $cloneCampaignRequest): object
+cloneCampaign($campaignId, $cloneCampaignRequest): object
 ```
 
 
@@ -55,11 +56,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\CampaignApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign being cloned.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $cloneCampaignRequest = new \macropage\SDKs\ebay\rest\marketing\Model\CloneCampaignRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\CloneCampaignRequest | This type defines the fields for a clone campaign request.
 
 try {
-    $result = $apiInstance->cloneCampaign($campaignId, $contentType, $cloneCampaignRequest);
+    $result = $apiInstance->cloneCampaign($campaignId, $cloneCampaignRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->cloneCampaign: ', $e->getMessage(), PHP_EOL;
@@ -71,7 +71,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign being cloned.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **cloneCampaignRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\CloneCampaignRequest**](../Model/CloneCampaignRequest.md)| This type defines the fields for a clone campaign request. | |
 
 ### Return type
@@ -94,12 +93,12 @@ try {
 ## `createCampaign()`
 
 ```php
-createCampaign($contentType, $createCampaignRequest): object
+createCampaign($createCampaignRequest): object
 ```
 
 
 
-This method can be used to create a Promoted Listings Standard (PLS), Promoted Listings Advanced (PLA), or Offsite Ads campaign.<br><br>A Promoted Listings <i>campaign</i> is the structure in which you place the ads or ad group for the listings you wish to promote.<br><br><span class=\"tablenote\"><b>Note:</b> Campaigns can only contain ads for a maximum of 50,000 items.</span><br>Promoted Listing Standard campaigns utilize a Cost Per Sale (CPS) funding model. Sellers can set the ad rate and bidding strategies that are right for their business through the <b>adRateStrategy</b>, <b>biddingStrategy</b>, <b>bidPercentage</b> fields. For more information on Promoted Listing Standard campaigns, see <a href=\"/api-docs/sell/static/marketing/pl-campaign-flow-pls.html\" target=\"_blank \">Promoted Listings Standard campaign flow</a>.<br><br>Promoted Listings Advanced campaigns utilize a Cost per Click (CPC) funding model. Sellers can create a daily budget through the <b>budget</b> container and choose what <b>channel</b> that their ads appear on. In addition, PLA campaigns give sellers the ability to create ad groups and specify keywords to ensure their ads reach their intended audience. For more information on Promoted Listings Advanced campaigns, see <a href=\"/api-docs/sell/static/marketing/pl-campaign-flow-pla.html\" target=\"_blank \">Promoted Listings Advanced campaign flow</a>.<br><br>Offsite Ads campaigns give sellers the ability to create their own advertising campaign and promote their eBay listing in leading external search channels. For more information on Offsite Ads campaigns, see <a href=\"/api-docs/sell/static/marketing/offsite-ads.html\" target=\"_blank \">Offsite Ads</a>.<br><br><span class=\"tablenote\"><b>Note:</b> Sellers can use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility\" target=\"_blank \">getAdvertisingEligibility</a> method of the <a href=\"/api-docs/sell/account/overview.html\" target=\"_blank \">Account API v1</a> to determine their eligibility status for eBay advertising programs.</span><br>To create a basic campaign, supply: <ul><li>The user-defined campaign name</li> <li>The start date (and optionally the end date) of the campaign</li> <li>The eBay marketplace on which the campaign is hosted</li> <li>Details on the campaign funding model</li></ul>For details on creating Promoted Listings campaigns and how to select the items to be included in your campaigns, see <a href=\"/api-docs/sell/static/marketing/pl-create-campaign.html\">Promoted Listings campaign creation</a>.
+This method can be used to create a Promoted Listings general, priority, or offsite campaign.<br><br>A Promoted Listings <i>campaign</i> is the structure in which you place the ads or ad group for the listings you wish to promote.<br><br><span class=\"tablenote\"><b>Note:</b> Campaigns can only contain ads for a maximum of 50,000 items.</span><br>General strategy campaigns utilize a Cost Per Sale (CPS) funding model. Sellers can set the ad rate and bidding strategies that are right for their business through the <b>adRateStrategy</b>, <b>biddingStrategy</b>, <b>bidPercentage</b> fields. For more information on general strategy campaigns, see <a href=\"/api-docs/sell/static/marketing/pl-campaign-flow-pls.html\" target=\"_blank \">Promoted Listings general strategy campaign flow</a>.<br><br>Priority strategy campaigns utilize a Cost per Click (CPC) funding model. Sellers can create a daily budget through the <b>budget</b> container and choose what <b>channel</b> that their ads appear on. In addition, priority strategy campaigns give sellers the ability to create ad groups and specify keywords to ensure their ads reach their intended audience. For more information on priority strategy campaigns, see <a href=\"/api-docs/sell/static/marketing/pl-campaign-flow-pla.html\" target=\"_blank \">Promoted listings priority strategy campaign flow</a>.<br><br>Promoted Offsite campaigns give sellers the ability to create their own advertising campaign and promote their eBay listing in leading external search channels. For more information on Promoted Offsite campaigns, see <a href=\"/api-docs/sell/static/marketing/offsite-ads.html\" target=\"_blank \">Promoted Offsite</a>.<br><br><span class=\"tablenote\"><b>Note:</b> Sellers can use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility\" target=\"_blank \">getAdvertisingEligibility</a> method of the <a href=\"/api-docs/sell/account/overview.html\" target=\"_blank \">Account API v1</a> to determine their eligibility status for eBay advertising programs.</span><br>To create a basic campaign, supply: <ul><li>The user-defined campaign name</li> <li>The start date (and optionally the end date) of the campaign</li> <li>The eBay marketplace on which the campaign is hosted</li> <li>Details on the campaign funding model</li></ul>For details on creating Promoted Listings campaigns and how to select the items to be included in your campaigns, see <a href=\"/api-docs/sell/static/marketing/pl-create-campaign.html\">Promoted Listings campaign creation</a>.
 
 ### Example
 
@@ -121,11 +120,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $createCampaignRequest = new \macropage\SDKs\ebay\rest\marketing\Model\CreateCampaignRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\CreateCampaignRequest | This type defines the fields for the create campaign request.
 
 try {
-    $result = $apiInstance->createCampaign($contentType, $createCampaignRequest);
+    $result = $apiInstance->createCampaign($createCampaignRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->createCampaign: ', $e->getMessage(), PHP_EOL;
@@ -136,7 +134,6 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **createCampaignRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\CreateCampaignRequest**](../Model/CreateCampaignRequest.md)| This type defines the fields for the create campaign request. | |
 
 ### Return type
@@ -476,7 +473,7 @@ try {
 ## `getCampaigns()`
 
 ```php
-getCampaigns($campaignName, $campaignStatus, $channels, $endDateRange, $fundingStrategy, $limit, $offset, $startDateRange): \macropage\SDKs\ebay\rest\marketing\Model\CampaignPagedCollectionResponse
+getCampaigns($campaignName, $campaignStatus, $campaignTargetingTypes, $channels, $endDateRange, $fundingStrategy, $limit, $offset, $startDateRange): \macropage\SDKs\ebay\rest\marketing\Model\CampaignPagedCollectionResponse
 ```
 
 
@@ -505,7 +502,8 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\CampaignApi(
 );
 $campaignName = 'campaignName_example'; // string | This query parameter specifies the name of the campaign being retrieved. The results are filtered to include only the campaign by the specified name.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve a list of a seller's campaign names.<br /><br /><b>Note: </b>The results might be null if other filters exclude the campaign with this name. <br /><br /><b>Maximum: </b> 1 campaign name
 $campaignStatus = 'campaignStatus_example'; // string | This query parameter specifies the status of the campaign(s) being retrieved.<br><br><span class=\"tablenote\"><b>Note:</b> The results might not include all the campaigns with this status if other filters exclude them.</span><br><b>Valid values:</b> See <a href=\"/api-docs/sell/marketing/types/pls:CampaignStatusEnum\">CampaignStatusEnum</a> <br /><br /><b>Maximum: </b> 1 status
-$channels = 'channels_example'; // string | This query parameter specifies the channel for the the campaign(s) being retrieved.<br><br>The results will be filtered to only include campaigns with the specified channel. If not specified, all campaigns matching other filter parameters will be returned. The results might not include these campaigns if other search conditions exclude them.<br /><br /><b>Valid Values:</b> See <a href=\"/api-docs/sell/marketing/types/pls:ChannelEnum\">ChannelEnum</a>
+$campaignTargetingTypes = 'campaignTargetingTypes_example'; // string | This query parameter specifies the targeting type of the campaign(s) to be retrieved.<br><br>The results will be filtered to only include campaigns with the specified targeting type. If not specified, all campaigns matching other filter parameters will be returned. The results might not include these campaigns if other search conditions exclude them.<br><br><b>Valid values:</b> See <a href=\"/api-docs/sell/marketing/types/pls:CampaignTargetingTypeEnum\">CampaignTargetingTypeEnum</a>
+$channels = 'channels_example'; // string | This query parameter specifies the channel for the campaign(s) being retrieved.<br><br>The results will be filtered to only include campaigns with the specified channel. If not specified, all campaigns matching other filter parameters will be returned. The results might not include these campaigns if other search conditions exclude them.<br /><br /><b>Valid Values:</b> See <a href=\"/api-docs/sell/marketing/types/pls:ChannelEnum\">ChannelEnum</a>
 $endDateRange = 'endDateRange_example'; // string | This query parameter specifies the range of a campaign's end date. The results are filtered to include only campaigns with an end date that is within specified range. <br><br><b>Valid format (UTC)</b>: <ul><li><code> yyyy-MM-ddThh:mm:ssZ..yyyy-MM-ddThh:mm:ssZ </code>  (campaign ends within this range)</li><li><code>yyyy-MM-ddThh:mm:ssZ..</code> (campaign ends on or after this date)</li><li><code>..yyyy-MM-ddThh:mm:ssZ </code> (campaign ends on or before this date)</li><li><code>2016-09-08T00:00.00.000Z..2016-09-09T00:00:00Z</code> (campaign ends on September 08, 2016)</li></ul><br><span class=\"tablenote\"><b>Note:</b>The results might not include all the campaigns ending on this date if other filters exclude them.</span>
 $fundingStrategy = 'fundingStrategy_example'; // string | This query parameter specifies the funding strategy for the campaign(s) being retrieved.<br /><br />The results will be filtered to only include campaigns with the specified funding model. If not specified, all campaigns matching the other filter parameters will be returned. The results might not include these campaigns if other search conditions exclude them.<br /><br /><b>Valid Values:</b> See <a href=\"/api-docs/sell/marketing/types/pls:FundingModelEnum\">FundingModelEnum</a>
 $limit = 'limit_example'; // string | <p>This query parameter specifies the maximum number of campaigns to return on a page in the paginated response.</p>  <b>Default: </b>10<br><br><b>Maximum: </b> 500
@@ -513,7 +511,7 @@ $offset = 'offset_example'; // string | This query parameter specifies the numbe
 $startDateRange = 'startDateRange_example'; // string | This query parameter specifies the range of a campaign's start date in which to filter the results. The results are filtered to include only campaigns with a start date that is equal to this date or is within specified range.<br><br><b>Valid format (UTC): </b> <ul><li><code>yyyy-MM-ddThh:mm:ssZ..yyyy-MM-ddThh:mm:ssZ</code> (starts within this range)</li><li><code>yyyy-MM-ddThh:mm:ssZ</code> (campaign starts on or after this date)</li><li><code>..yyyy-MM-ddThh:mm:ssZ </code>(campaign starts on or before this date)</li><li><code>2016-09-08T00:00.00.000Z..2016-09-09T00:00:00Z</code> (campaign starts on September 08, 2016)</li></ul><br><span class=\"tablenote\"><b>Note:</b> The results might not include all the campaigns with this start date if other filters exclude them.</span>
 
 try {
-    $result = $apiInstance->getCampaigns($campaignName, $campaignStatus, $channels, $endDateRange, $fundingStrategy, $limit, $offset, $startDateRange);
+    $result = $apiInstance->getCampaigns($campaignName, $campaignStatus, $campaignTargetingTypes, $channels, $endDateRange, $fundingStrategy, $limit, $offset, $startDateRange);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->getCampaigns: ', $e->getMessage(), PHP_EOL;
@@ -526,7 +524,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignName** | **string**| This query parameter specifies the name of the campaign being retrieved. The results are filtered to include only the campaign by the specified name.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve a list of a seller&#39;s campaign names.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Note: &lt;/b&gt;The results might be null if other filters exclude the campaign with this name. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Maximum: &lt;/b&gt; 1 campaign name | [optional] |
 | **campaignStatus** | **string**| This query parameter specifies the status of the campaign(s) being retrieved.&lt;br&gt;&lt;br&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; The results might not include all the campaigns with this status if other filters exclude them.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Valid values:&lt;/b&gt; See &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/types/pls:CampaignStatusEnum\&quot;&gt;CampaignStatusEnum&lt;/a&gt; &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Maximum: &lt;/b&gt; 1 status | [optional] |
-| **channels** | **string**| This query parameter specifies the channel for the the campaign(s) being retrieved.&lt;br&gt;&lt;br&gt;The results will be filtered to only include campaigns with the specified channel. If not specified, all campaigns matching other filter parameters will be returned. The results might not include these campaigns if other search conditions exclude them.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Valid Values:&lt;/b&gt; See &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/types/pls:ChannelEnum\&quot;&gt;ChannelEnum&lt;/a&gt; | [optional] |
+| **campaignTargetingTypes** | **string**| This query parameter specifies the targeting type of the campaign(s) to be retrieved.&lt;br&gt;&lt;br&gt;The results will be filtered to only include campaigns with the specified targeting type. If not specified, all campaigns matching other filter parameters will be returned. The results might not include these campaigns if other search conditions exclude them.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values:&lt;/b&gt; See &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/types/pls:CampaignTargetingTypeEnum\&quot;&gt;CampaignTargetingTypeEnum&lt;/a&gt; | [optional] |
+| **channels** | **string**| This query parameter specifies the channel for the campaign(s) being retrieved.&lt;br&gt;&lt;br&gt;The results will be filtered to only include campaigns with the specified channel. If not specified, all campaigns matching other filter parameters will be returned. The results might not include these campaigns if other search conditions exclude them.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Valid Values:&lt;/b&gt; See &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/types/pls:ChannelEnum\&quot;&gt;ChannelEnum&lt;/a&gt; | [optional] |
 | **endDateRange** | **string**| This query parameter specifies the range of a campaign&#39;s end date. The results are filtered to include only campaigns with an end date that is within specified range. &lt;br&gt;&lt;br&gt;&lt;b&gt;Valid format (UTC)&lt;/b&gt;: &lt;ul&gt;&lt;li&gt;&lt;code&gt; yyyy-MM-ddThh:mm:ssZ..yyyy-MM-ddThh:mm:ssZ &lt;/code&gt;  (campaign ends within this range)&lt;/li&gt;&lt;li&gt;&lt;code&gt;yyyy-MM-ddThh:mm:ssZ..&lt;/code&gt; (campaign ends on or after this date)&lt;/li&gt;&lt;li&gt;&lt;code&gt;..yyyy-MM-ddThh:mm:ssZ &lt;/code&gt; (campaign ends on or before this date)&lt;/li&gt;&lt;li&gt;&lt;code&gt;2016-09-08T00:00.00.000Z..2016-09-09T00:00:00Z&lt;/code&gt; (campaign ends on September 08, 2016)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;b&gt;Note:&lt;/b&gt;The results might not include all the campaigns ending on this date if other filters exclude them.&lt;/span&gt; | [optional] |
 | **fundingStrategy** | **string**| This query parameter specifies the funding strategy for the campaign(s) being retrieved.&lt;br /&gt;&lt;br /&gt;The results will be filtered to only include campaigns with the specified funding model. If not specified, all campaigns matching the other filter parameters will be returned. The results might not include these campaigns if other search conditions exclude them.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Valid Values:&lt;/b&gt; See &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/types/pls:FundingModelEnum\&quot;&gt;FundingModelEnum&lt;/a&gt; | [optional] |
 | **limit** | **string**| &lt;p&gt;This query parameter specifies the maximum number of campaigns to return on a page in the paginated response.&lt;/p&gt;  &lt;b&gt;Default: &lt;/b&gt;10&lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum: &lt;/b&gt; 500 | [optional] |
@@ -558,7 +557,7 @@ launchCampaign($campaignId)
 
 
 
-This method launches a Promoted Listings Advanced campaign created using the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/setupQuickCampaign\">setupQuickCampaign</a> method that is in <code>DRAFT</code> status. This changes the campaign status to <code>RUNNING</code> or <code>SCHEDULED</code>, based on its specified start date. Specify the campaign you wish to launch by supplying its <b>campaign_id</b> as a path parameter in the call URI. <br><br>Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve the <b>campaign_id</b> and the campaign status for all the seller's campaigns.
+This method launches a priority strategy campaign created using the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/setupQuickCampaign\">setupQuickCampaign</a> method that is in <code>DRAFT</code> status. This changes the campaign status to <code>RUNNING</code> or <code>SCHEDULED</code>, based on its specified start date. Specify the campaign you wish to launch by supplying its <b>campaign_id</b> as a path parameter in the call URI. <br><br>Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve the <b>campaign_id</b> and the campaign status for all the seller's campaigns.
 
 ### Example
 
@@ -580,7 +579,7 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign being launched.<br><br>For PLA campaigns created with the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/setupQuickCampaign\">setupQuickCampaign</a> method, the <b>getCampaign</b> URI for that campaign is returned in the <b>Location</b> response header. That URI will include the <b>campaign_id</b> value, which you will pass in as a path parameter in the <b>launchCampaign</b> method.<br><br><span class=\"tablenote\"><b>Note:</b> The campaign ID value used here must be for a PLA campaign in <code>DRAFT</code> status.</span>
+$campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign being launched.<br><br>For priority strategy campaigns created with the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/setupQuickCampaign\">setupQuickCampaign</a> method, the <b>getCampaign</b> URI for that campaign is returned in the <b>Location</b> response header. That URI will include the <b>campaign_id</b> value, which you will pass in as a path parameter in the <b>launchCampaign</b> method.<br><br><span class=\"tablenote\"><b>Note:</b> The campaign ID value used here must be for a priority strategy campaign in <code>DRAFT</code> status.</span>
 
 try {
     $apiInstance->launchCampaign($campaignId);
@@ -593,7 +592,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign being launched.&lt;br&gt;&lt;br&gt;For PLA campaigns created with the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/setupQuickCampaign\&quot;&gt;setupQuickCampaign&lt;/a&gt; method, the &lt;b&gt;getCampaign&lt;/b&gt; URI for that campaign is returned in the &lt;b&gt;Location&lt;/b&gt; response header. That URI will include the &lt;b&gt;campaign_id&lt;/b&gt; value, which you will pass in as a path parameter in the &lt;b&gt;launchCampaign&lt;/b&gt; method.&lt;br&gt;&lt;br&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; The campaign ID value used here must be for a PLA campaign in &lt;code&gt;DRAFT&lt;/code&gt; status.&lt;/span&gt; | |
+| **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign being launched.&lt;br&gt;&lt;br&gt;For priority strategy campaigns created with the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/setupQuickCampaign\&quot;&gt;setupQuickCampaign&lt;/a&gt; method, the &lt;b&gt;getCampaign&lt;/b&gt; URI for that campaign is returned in the &lt;b&gt;Location&lt;/b&gt; response header. That URI will include the &lt;b&gt;campaign_id&lt;/b&gt; value, which you will pass in as a path parameter in the &lt;b&gt;launchCampaign&lt;/b&gt; method.&lt;br&gt;&lt;br&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; The campaign ID value used here must be for a priority strategy campaign in &lt;code&gt;DRAFT&lt;/code&gt; status.&lt;/span&gt; | |
 
 ### Return type
 
@@ -739,12 +738,12 @@ void (empty response body)
 ## `setupQuickCampaign()`
 
 ```php
-setupQuickCampaign($contentType, $quickSetupRequest): object
+setupQuickCampaign($quickSetupRequest): object
 ```
 
 
 
-This method allows the seller to expedite the creation of a Promoted Listings Advanced (PLA) campaign.<br><br>Sellers only need to provide basic campaign information, such as the user-defined campaign name, the start date (and optionally the end date) of the campaign, the daily budget amount of the campaign, and the eBay marketplace where the campaign will be hosted. The seller must also identify the items they want to place in the campaign by adding the listing id of each item in the <b>listingIds</b> array of the request. <br><br>Using the provided <b>listingIds</b>, eBay creates ad groups for the campaign and organizes the listings into the appropriate ad group. eBay then adds keywords to each ad group and assigns each keyword a suggested bid. <br><br>By default, campaigns created using <b>setupQuickCampaign</b> utilize a <code>FIXED</code> keyword bidding strategy which means that a seller manually assigns and adjusts keyword bids for their CPC campaign.<br><br>Alternatively, once the campaign has been created, sellers may opt to utilize a <code>DYNAMIC</code> bidding strategy which means that eBay will manage a campaign's keyword bids and automatically update them daily to the suggested bid.<br><br>For additional information about <code>FIXED</code> and <code>DYNAMIC</code> bidding strategies, refer to <a href=\"/api-docs/sell/marketing/resources/campaign/methods/updateBiddingStrategy \" target=\"_blank\">updateBiddingStrategy</a>.<br><br>Campaigns created using this method will be in <code>DRAFT</code> status upon creation.<br><br>The location response header returned contains the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaign\">getCampaign</a> URI to retrieve the newly created campaign that is in draft status. Sellers should make this call to review and approve the campaign before they use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/launchCampaign\">launchCampaign</a> method to start the campaign.<br><br><span class=\"tablenote\"><b>Note:</b> Promoted Listing Standard (PLS) campaigns are not supported.</span>
+This method allows the seller to expedite the creation of a priority strategy campaign.<br><br>Sellers only need to provide basic campaign information, such as the user-defined campaign name, the start date (and optionally the end date) of the campaign, the daily budget amount of the campaign, and the eBay marketplace where the campaign will be hosted. The seller must also identify the items they want to place in the campaign by adding the listing id of each item in the <b>listingIds</b> array of the request. <br><br>Using the provided <b>listingIds</b>, eBay creates ad groups for the campaign and organizes the listings into the appropriate ad group. eBay then adds keywords to each ad group and assigns each keyword a suggested bid. <br><br>By default, campaigns created using <b>setupQuickCampaign</b> utilize a <code>FIXED</code> keyword bidding strategy which means that a seller manually assigns and adjusts keyword bids for their CPC campaign.<br><br>Alternatively, once the campaign has been created, sellers may opt to utilize a <code>DYNAMIC</code> bidding strategy which means that eBay will manage a campaign's keyword bids and automatically update them daily to the suggested bid.<br><br>For additional information about <code>FIXED</code> and <code>DYNAMIC</code> bidding strategies, refer to <a href=\"/api-docs/sell/marketing/resources/campaign/methods/updateBiddingStrategy \" target=\"_blank\">updateBiddingStrategy</a>.<br><br>Campaigns created using this method will be in <code>DRAFT</code> status upon creation.<br><br>The location response header returned contains the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaign\">getCampaign</a> URI to retrieve the newly created campaign that is in draft status. Sellers should make this call to review and approve the campaign before they use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/launchCampaign\">launchCampaign</a> method to start the campaign.<br><br><span class=\"tablenote\"><b>Note:</b> General strategy ad campaigns are not supported.</span>
 
 ### Example
 
@@ -766,11 +765,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
-$quickSetupRequest = new \macropage\SDKs\ebay\rest\marketing\Model\QuickSetupRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\QuickSetupRequest | This type defines the fields to create a quick setup Promoted Listings Advanced (PLA) campaign.
+$quickSetupRequest = new \macropage\SDKs\ebay\rest\marketing\Model\QuickSetupRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\QuickSetupRequest | This type defines the fields to create a quick setup priority strategy campaign.
 
 try {
-    $result = $apiInstance->setupQuickCampaign($contentType, $quickSetupRequest);
+    $result = $apiInstance->setupQuickCampaign($quickSetupRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->setupQuickCampaign: ', $e->getMessage(), PHP_EOL;
@@ -781,8 +779,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
-| **quickSetupRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\QuickSetupRequest**](../Model/QuickSetupRequest.md)| This type defines the fields to create a quick setup Promoted Listings Advanced (PLA) campaign. | |
+| **quickSetupRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\QuickSetupRequest**](../Model/QuickSetupRequest.md)| This type defines the fields to create a quick setup priority strategy campaign. | |
 
 ### Return type
 
@@ -809,7 +806,7 @@ suggestBudget($xEBAYCMARKETPLACEID): \macropage\SDKs\ebay\rest\marketing\Model\S
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only supported for Offsite Ads campaigns. Sellers can use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility\" target=\"_blank \">getAdvertisingEligibility</a> method of the <a href=\"//api-docs/sell/account/overview.html\" target=\"_blank \">Account API v1</a> to determine if they are eligible for Offsite Ads.</span><br>This method allows sellers to retrieve the suggested budget for an Offsite Ads campaign.
+<span class=\"tablenote\"><b>Note:</b> This method is only supported for Promoted Offsite campaigns. Sellers can use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility\" target=\"_blank \">getAdvertisingEligibility</a> method of the <a href=\"//api-docs/sell/account/overview.html\" target=\"_blank \">Account API v1</a> to determine if they are eligible for offsite campaigns.</span><br>This method allows sellers to retrieve the suggested budget for an offsite campaign.
 
 ### Example
 
@@ -872,7 +869,7 @@ suggestItems($campaignId, $categoryIds, $limit, $offset): \macropage\SDKs\ebay\r
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method allows sellers to obtain ideas for listings, which can be targeted for Promoted Listings campaigns.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method allows sellers to obtain ideas for listings, which can be targeted for Promoted Listings campaigns.
 
 ### Example
 
@@ -933,15 +930,78 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateAdRateStrategy()`
+## `suggestMaxCpc()`
 
 ```php
-updateAdRateStrategy($campaignId, $contentType, $updateAdrateStrategyRequest)
+suggestMaxCpc($suggestMaxCpcRequest): \macropage\SDKs\ebay\rest\marketing\Model\SuggestMaxCpcResponse
 ```
 
 
 
-This method updates the ad rate strategy for an existing Promoted Listings Standard (PLS) rules-based ad campaign that uses the Cost Per Sale (CPS) funding model.<br /><br />Specify the <b>campaign_id</b> as a path parameter. You can retrieve the campaign IDs for a seller by calling the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method.<br /><br /><span class=\"tablenote\"><b>Note:</b> This method only applies to the CPS funding model; it does not apply to the Cost Per Click (CPC) funding model. See <a href=\"/api-docs/sell/static/marketing/pl-overview.html#funding-model\">Funding Models</a> in the <i>Promoted Listings Playbook</i> for more information.</span>
+<span class=\"tablenote\"><b>Note:</b> This method is only supported for smart targeting priority strategy campaigns. Sellers can use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method of the Account API v1 to determine if they are eligible for a priority strategy campaign.</span><br />This method allows sellers to retrieve the suggested maximum cost-per-click value for a smart targeting campaign. This value is required when creating a smart targeting campaign and indicates the maximum amount for which the eBay suggested bid can be adjusted.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: api_auth
+$config = macropage\SDKs\ebay\rest\marketing\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: api_auth
+$config = macropage\SDKs\ebay\rest\marketing\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$suggestMaxCpcRequest = new \macropage\SDKs\ebay\rest\marketing\Model\SuggestMaxCpcRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\SuggestMaxCpcRequest | This type defines the fields used in the <b>suggestMaxCpc</b> request.
+
+try {
+    $result = $apiInstance->suggestMaxCpc($suggestMaxCpcRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->suggestMaxCpc: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **suggestMaxCpcRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\SuggestMaxCpcRequest**](../Model/SuggestMaxCpcRequest.md)| This type defines the fields used in the &lt;b&gt;suggestMaxCpc&lt;/b&gt; request. | |
+
+### Return type
+
+[**\macropage\SDKs\ebay\rest\marketing\Model\SuggestMaxCpcResponse**](../Model/SuggestMaxCpcResponse.md)
+
+### Authorization
+
+[api_auth](../../README.md#api_auth), [api_auth](../../README.md#api_auth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAdRateStrategy()`
+
+```php
+updateAdRateStrategy($campaignId, $updateAdrateStrategyRequest)
+```
+
+
+
+This method updates the ad rate strategy for an existing rules-based general strategy ad campaign that uses the Cost Per Sale (CPS) funding model.<br /><br />Specify the <b>campaign_id</b> as a path parameter. You can retrieve the campaign IDs for a seller by calling the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method.<br /><br /><span class=\"tablenote\"><b>Note:</b> This method only applies to the CPS funding model; it does not apply to the Cost Per Click (CPC) funding model. See <a href=\"/api-docs/sell/static/marketing/pl-overview.html#funding-model\">Funding Models</a> in the <i>Promoted Listings Playbook</i> for more information.</span>
 
 ### Example
 
@@ -964,11 +1024,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\CampaignApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which the ad rate strategy is being updated.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $updateAdrateStrategyRequest = new \macropage\SDKs\ebay\rest\marketing\Model\UpdateAdrateStrategyRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\UpdateAdrateStrategyRequest | This type defines the request fields for the ad rate strategy that shall be updated.
 
 try {
-    $apiInstance->updateAdRateStrategy($campaignId, $contentType, $updateAdrateStrategyRequest);
+    $apiInstance->updateAdRateStrategy($campaignId, $updateAdrateStrategyRequest);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->updateAdRateStrategy: ', $e->getMessage(), PHP_EOL;
 }
@@ -979,7 +1038,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which the ad rate strategy is being updated.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **updateAdrateStrategyRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\UpdateAdrateStrategyRequest**](../Model/UpdateAdrateStrategyRequest.md)| This type defines the request fields for the ad rate strategy that shall be updated. | |
 
 ### Return type
@@ -1002,12 +1060,12 @@ void (empty response body)
 ## `updateBiddingStrategy()`
 
 ```php
-updateBiddingStrategy($campaignId, $contentType, $updateBiddingStrategyRequest)
+updateBiddingStrategy($campaignId, $updateBiddingStrategyRequest)
 ```
 
 
 
-This method allows sellers to change the bidding strategy for a specified Cost Per Click (CPC) campaign that uses manual targeting. Available bidding strategies are:<ul><li><code>FIXED</code><br><br>When using a fixed bidding strategy, sellers manually assign and adjust keyword bids for the CPC campaign.</li><li><code>DYNAMIC</code><br><br>When using a dynamic bidding strategy, eBay will manage a campaign's keyword bids and automatically update them daily to the suggested bid.<br><br><span class=\"tablenote\"><b>Note:</b> For a CPC campaign using dynamic bidding, sellers can continue to manually add keywords for the campaign, but they are no longer able to manually adjust their associated bid values. In order to manually adjust bid values, sellers must use the <code>FIXED</code> bidding strategy.</span></li></ul>In addition, this method allows sellers to modify the <b>maxCPC</b> value of a smart targeting campaign.<span class=\"tablenote\"><b>Note:</b> This method only applies to the Cost Per Click (CPC) funding model; it does not apply to the Cost Per Sale (CPS) funding model. Refer to <a href=\"/api-docs/sell/static/marketing/pl-overview.html#funding-model\">Funding Models</a> in the <i>Promoted Listings Playbook</i> for more information.</span>
+This method allows sellers to change the bidding strategy for a specified Cost Per Click (CPC) campaign that uses manual targeting. Available bidding strategies are:<ul><li><code>FIXED</code><br><br>When using a fixed bidding strategy, sellers manually assign and adjust keyword bids for the CPC campaign.</li><li><code>DYNAMIC</code><br><br>When using a dynamic bidding strategy, eBay will manage a campaign's keyword bids and automatically update them daily to the suggested bid.<br><br><span class=\"tablenote\"><b>Note:</b> For a CPC campaign using dynamic bidding, sellers can continue to manually add keywords for the campaign, but they are no longer able to manually adjust their associated bid values. In order to manually adjust bid values, sellers must use the <code>FIXED</code> bidding strategy.</span></li></ul>In addition, this method allows sellers to modify the <b>maxCPC</b> value of a smart targeting campaign.<br><span class=\"tablenote\"><b>Note:</b> This method only applies to the Cost Per Click (CPC) funding model; it does not apply to the Cost Per Sale (CPS) funding model. Refer to <a href=\"/api-docs/sell/static/marketing/pl-overview.html#funding-model\">Funding Models</a> in the <i>Promoted Listings Playbook</i> for more information.</span>
 
 ### Example
 
@@ -1030,11 +1088,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\CampaignApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which the keyword bidding strategy is being updated.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $updateBiddingStrategyRequest = new \macropage\SDKs\ebay\rest\marketing\Model\UpdateBiddingStrategyRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\UpdateBiddingStrategyRequest | This type specifies the new value for the bidding strategy.
 
 try {
-    $apiInstance->updateBiddingStrategy($campaignId, $contentType, $updateBiddingStrategyRequest);
+    $apiInstance->updateBiddingStrategy($campaignId, $updateBiddingStrategyRequest);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->updateBiddingStrategy: ', $e->getMessage(), PHP_EOL;
 }
@@ -1045,7 +1102,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which the keyword bidding strategy is being updated.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **updateBiddingStrategyRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\UpdateBiddingStrategyRequest**](../Model/UpdateBiddingStrategyRequest.md)| This type specifies the new value for the bidding strategy. | |
 
 ### Return type
@@ -1068,12 +1124,12 @@ void (empty response body)
 ## `updateCampaignBudget()`
 
 ```php
-updateCampaignBudget($campaignId, $contentType, $updateCampaignBudgetRequest)
+updateCampaignBudget($campaignId, $updateCampaignBudgetRequest)
 ```
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method updates the daily budget for a PLA campaign that uses the Cost Per Click (CPC) funding model.<br /><br />A click occurs when an eBay user finds and clicks on the seller’s listing (within the search results) after using a keyword that the seller has created for the campaign. For each ad in an ad group in the campaign, each click triggers a cost, which gets subtracted from the campaign’s daily budget. If the cost of the clicks exceeds the daily budget, the Promoted Listings campaign will be paused until the next day.<br /><br />Specify the <b>campaign_id</b> as a path parameter. You can retrieve the campaign IDs for a seller by calling the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method updates the daily budget for a priority strategy campaign that uses the Cost Per Click (CPC) funding model.<br /><br />A click occurs when an eBay user finds and clicks on the seller’s listing (within the search results) after using a keyword that the seller has created for the campaign. For each ad in an ad group in the campaign, each click triggers a cost, which gets subtracted from the campaign’s daily budget. If the cost of the clicks exceeds the daily budget, the Promoted Listings campaign will be paused until the next day.<br /><br />Specify the <b>campaign_id</b> as a path parameter. You can retrieve the campaign IDs for a seller by calling the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method.
 
 ### Example
 
@@ -1096,11 +1152,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\CampaignApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which the budget is being updated.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $updateCampaignBudgetRequest = new \macropage\SDKs\ebay\rest\marketing\Model\UpdateCampaignBudgetRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\UpdateCampaignBudgetRequest | This type defines the request fields for the budget details that shall be updated.
 
 try {
-    $apiInstance->updateCampaignBudget($campaignId, $contentType, $updateCampaignBudgetRequest);
+    $apiInstance->updateCampaignBudget($campaignId, $updateCampaignBudgetRequest);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->updateCampaignBudget: ', $e->getMessage(), PHP_EOL;
 }
@@ -1111,7 +1166,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which the budget is being updated.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **updateCampaignBudgetRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\UpdateCampaignBudgetRequest**](../Model/UpdateCampaignBudgetRequest.md)| This type defines the request fields for the budget details that shall be updated. | |
 
 ### Return type
@@ -1134,7 +1188,7 @@ void (empty response body)
 ## `updateCampaignIdentification()`
 
 ```php
-updateCampaignIdentification($campaignId, $contentType, $updateCampaignIdentificationRequest)
+updateCampaignIdentification($campaignId, $updateCampaignIdentificationRequest)
 ```
 
 
@@ -1162,11 +1216,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\CampaignApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign being updated.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $updateCampaignIdentificationRequest = new \macropage\SDKs\ebay\rest\marketing\Model\UpdateCampaignIdentificationRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\UpdateCampaignIdentificationRequest | This type defines the fields to update the campaign name and start and end dates.
 
 try {
-    $apiInstance->updateCampaignIdentification($campaignId, $contentType, $updateCampaignIdentificationRequest);
+    $apiInstance->updateCampaignIdentification($campaignId, $updateCampaignIdentificationRequest);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->updateCampaignIdentification: ', $e->getMessage(), PHP_EOL;
 }
@@ -1177,7 +1230,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign being updated.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **updateCampaignIdentificationRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\UpdateCampaignIdentificationRequest**](../Model/UpdateCampaignIdentificationRequest.md)| This type defines the fields to update the campaign name and start and end dates. | |
 
 ### Return type

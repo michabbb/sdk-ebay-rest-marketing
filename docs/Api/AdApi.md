@@ -25,12 +25,12 @@ All URIs are relative to https://api.ebay.com/sell/marketing/v1, except if the o
 ## `bulkCreateAdsByInventoryReference()`
 
 ```php
-bulkCreateAdsByInventoryReference($campaignId, $contentType, $bulkCreateAdsByInventoryReferenceRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdsByInventoryReferenceResponse
+bulkCreateAdsByInventoryReference($campaignId, $bulkCreateAdsByInventoryReferenceRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdsByInventoryReferenceResponse
 ```
 
 
 
-This method adds multiple listings that are managed with the <a href=\"/api-docs/sell/inventory/resources/methods\" title=\"Inventory API Reference\">Inventory API</a> to an existing Promoted Listings campaign.<br /><br />For Promoted Listings Standard (PLS) campaigns using the Cost Per Sale (CPS) model, bulk ads may be directly created for the listing.<br /><br />For each listing specified in the request, this method:<br /><ul><li>Creates an ad for the listing.</li> <li>Sets the bid percentage (also known as the <i>ad rate</i>) for the ads created.</li> <li>Associates the ads created with the specified campaign.</li></ul><br />To create ads for a listing, specify their <b>inventoryReferenceId</b> and <b>inventoryReferenceType</b>, plus the <b>bidPercentage</b> for the ad in the payload of the request. Specify the campaign to which you want to associate the ads using the <b>campaign_id</b> path parameter.<br /><br /><span class=\"tablenote\"><b>Note:</b> This method only applies to the Cost Per Sale (CPS) funding model; it does not apply to the Cost Per Click (CPC) funding model. See <a href=\"/api-docs/sell/static/marketing/pl-overview.html#funding-model\">Funding Models</a> in the <i>Promoted Listings Playbook</i> for more information.</span><br /><br />Use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/createCampaign\">createCampaign</a> to create a new campaign and use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> to get a list of existing campaigns.
+This method adds multiple listings that are managed with the <a href=\"/api-docs/sell/inventory/resources/methods\" title=\"Inventory API Reference\">Inventory API</a> to an existing Promoted Listings campaign.<br /><br />For general strategy campaigns using the Cost Per Sale (CPS) model, bulk ads may be directly created for the listing.<br /><br />For each listing specified in the request, this method:<br /><ul><li>Creates an ad for the listing.</li> <li>Sets the bid percentage (also known as the <i>ad rate</i>) for the ads created.</li> <li>Associates the ads created with the specified campaign.</li></ul><br />To create ads for a listing, specify their <b>inventoryReferenceId</b> and <b>inventoryReferenceType</b>, plus the <b>bidPercentage</b> for the ad in the payload of the request. Specify the campaign to which you want to associate the ads using the <b>campaign_id</b> path parameter.<br /><br /><span class=\"tablenote\"><b>Note:</b> This method only applies to the Cost Per Sale (CPS) funding model; it does not apply to the Cost Per Click (CPC) funding model. See <a href=\"/api-docs/sell/static/marketing/pl-overview.html#funding-model\">Funding Models</a> in the <i>Promoted Listings Playbook</i> for more information.</span><br /><br />Use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/createCampaign\">createCampaign</a> to create a new campaign and use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> to get a list of existing campaigns.
 
 ### Example
 
@@ -53,11 +53,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to associated the ads being created.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkCreateAdsByInventoryReferenceRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdsByInventoryReferenceRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdsByInventoryReferenceRequest | The container for the bulk request to create ads for eBay inventory reference IDs. eBay inventory reference IDs are seller-defined IDs used by theInventory API.
 
 try {
-    $result = $apiInstance->bulkCreateAdsByInventoryReference($campaignId, $contentType, $bulkCreateAdsByInventoryReferenceRequest);
+    $result = $apiInstance->bulkCreateAdsByInventoryReference($campaignId, $bulkCreateAdsByInventoryReferenceRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->bulkCreateAdsByInventoryReference: ', $e->getMessage(), PHP_EOL;
@@ -69,7 +68,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to associated the ads being created.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **bulkCreateAdsByInventoryReferenceRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdsByInventoryReferenceRequest**](../Model/BulkCreateAdsByInventoryReferenceRequest.md)| The container for the bulk request to create ads for eBay inventory reference IDs. eBay inventory reference IDs are seller-defined IDs used by theInventory API. | |
 
 ### Return type
@@ -92,12 +90,12 @@ try {
 ## `bulkCreateAdsByListingId()`
 
 ```php
-bulkCreateAdsByListingId($campaignId, $contentType, $bulkCreateAdRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkAdResponse
+bulkCreateAdsByListingId($campaignId, $bulkCreateAdRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkAdResponse
 ```
 
 
 
-This method adds multiple listings to an existing Promoted Listings campaign using <b>listingId</b> values generated by the <a href=\"/Devzone/XML/docs/Reference/eBay/index.html\" title=\"Trading API Reference\">Trading API</a> or <a href=\"/api-docs/sell/inventory/resources/methods\" title=\"Inventory API Reference\">Inventory API</a>, or using values generated by an ad group ID.<p>For Promoted Listings Standard (PLS) campaigns using the Cost Per Sale (CPS) funding model, bulk ads may be directly created for the listing.</p><p>For each listing ID specified in the request, this method:</p>  <ul><li>Creates an ad for the listing.</li> <li>Sets the bid percentage (also known as the <i>ad rate</i>) for the ad.</li> <li>Associates the ad with the specified campaign.</li></ul><p>To create an ad for a listing, specify its <b>listingId</b>, plus the <b>bidPercentage</b> for the ad in the payload of the request. Specify the campaign to associate the ads with using the <b>campaign_id</b> path parameter. Listing IDs are generated by eBay when a seller creates listings with the Trading API.</p><p>You can specify a maximum of <b>500 listings per call</b> and each campaign can have ads for a maximum of 50,000 items. Be aware when using this call that each variation in a multiple-variation listing creates an individual ad.</p><p>For manual targeting Promoted Listings Advanced (PLA) campaigns using the Cost Per Click (CPC) funding model, an ad group must be created first. If no ad group has been created for the campaign, ads cannot be created.<br><br><span class=\"tablenote\"><b>Note:</b> Ad groups are not required when adding listings to a smart targeting campaign.</span></p><p>For the ad group specified in the request, this method associates the ad with the specified ad group.</p><p>To create an ad for an ad group, specify the name of the ad group plus the <b>defaultBid</b> for the ad in the payload of the request. Specify the campaign to associate the ads with using the <b>campaign_id</b> path parameter. Ad groups are generated using the <a href=\"/api-docs/sell/marketing/resources/adgroup/methods/createAdGroup\">createAdGroup</a>  method.</p> <p>You can specify one or more ad groups per campaign.</p><p>Use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/createCampaign\">createCampaign</a> to create a new campaign and use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> to get a list of existing campaigns.</p>
+This method adds multiple listings to an existing Promoted Listings campaign using <b>listingId</b> values generated by the <a href=\"/Devzone/XML/docs/Reference/eBay/index.html\" title=\"Trading API Reference\">Trading API</a> or <a href=\"/api-docs/sell/inventory/resources/methods\" title=\"Inventory API Reference\">Inventory API</a>, or using values generated by an ad group ID.<p>For general strategy campaigns using the Cost Per Sale (CPS) funding model, bulk ads may be directly created for the listing.</p><p>For each listing ID specified in the request, this method:</p>  <ul><li>Creates an ad for the listing.</li> <li>Sets the bid percentage (also known as the <i>ad rate</i>) for the ad.</li> <li>Associates the ad with the specified campaign.</li></ul><p>To create an ad for a listing, specify its <b>listingId</b>, plus the <b>bidPercentage</b> for the ad in the payload of the request. Specify the campaign to associate the ads with using the <b>campaign_id</b> path parameter. Listing IDs are generated by eBay when a seller creates listings with the Trading API.</p><p>You can specify a maximum of <b>500 listings per call</b> and each campaign can have ads for a maximum of 50,000 items. Be aware when using this call that each variation in a multiple-variation listing creates an individual ad.</p><p>For manual targeting priority strategy campaigns using the Cost Per Click (CPC) funding model, an ad group must be created first. If no ad group has been created for the campaign, ads cannot be created.<br><br><span class=\"tablenote\"><b>Note:</b> Ad groups are not required when adding listings to a smart targeting campaign.</span></p><p>For the ad group specified in the request, this method associates the ad with the specified ad group.</p><p>To create an ad for an ad group, specify the name of the ad group plus the <b>defaultBid</b> for the ad in the payload of the request. Specify the campaign to associate the ads with using the <b>campaign_id</b> path parameter. Ad groups are generated using the <a href=\"/api-docs/sell/marketing/resources/adgroup/methods/createAdGroup\">createAdGroup</a>  method.</p> <p>You can specify one or more ad groups per campaign.</p><p>Use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/createCampaign\">createCampaign</a> to create a new campaign and use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> to get a list of existing campaigns.</p>
 
 ### Example
 
@@ -120,11 +118,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to associated the ads being created.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkCreateAdRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdRequest | The container for the bulk request to create ads for eBay listing IDs. eBay listing IDs are generated by the Trading API and Inventory API when the listing is created on eBay.
 
 try {
-    $result = $apiInstance->bulkCreateAdsByListingId($campaignId, $contentType, $bulkCreateAdRequest);
+    $result = $apiInstance->bulkCreateAdsByListingId($campaignId, $bulkCreateAdRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->bulkCreateAdsByListingId: ', $e->getMessage(), PHP_EOL;
@@ -136,7 +133,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to associated the ads being created.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **bulkCreateAdRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdRequest**](../Model/BulkCreateAdRequest.md)| The container for the bulk request to create ads for eBay listing IDs. eBay listing IDs are generated by the Trading API and Inventory API when the listing is created on eBay. | |
 
 ### Return type
@@ -159,7 +155,7 @@ try {
 ## `bulkDeleteAdsByInventoryReference()`
 
 ```php
-bulkDeleteAdsByInventoryReference($campaignId, $contentType, $bulkDeleteAdsByInventoryReferenceRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkDeleteAdsByInventoryReferenceResponse
+bulkDeleteAdsByInventoryReference($campaignId, $bulkDeleteAdsByInventoryReferenceRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkDeleteAdsByInventoryReferenceResponse
 ```
 
 
@@ -187,11 +183,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to delete a set of ads.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkDeleteAdsByInventoryReferenceRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkDeleteAdsByInventoryReferenceRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkDeleteAdsByInventoryReferenceRequest | This request works with listings created via the <a href=\"/api-docs/sell/inventory/resources/methods\">Inventory API</a>.<br /><br />The request is to delete a set of ads in bulk, as specified by a list of inventory reference IDs from the specified campaign.
 
 try {
-    $result = $apiInstance->bulkDeleteAdsByInventoryReference($campaignId, $contentType, $bulkDeleteAdsByInventoryReferenceRequest);
+    $result = $apiInstance->bulkDeleteAdsByInventoryReference($campaignId, $bulkDeleteAdsByInventoryReferenceRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->bulkDeleteAdsByInventoryReference: ', $e->getMessage(), PHP_EOL;
@@ -203,7 +198,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to delete a set of ads.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **bulkDeleteAdsByInventoryReferenceRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\BulkDeleteAdsByInventoryReferenceRequest**](../Model/BulkDeleteAdsByInventoryReferenceRequest.md)| This request works with listings created via the &lt;a href&#x3D;\&quot;/api-docs/sell/inventory/resources/methods\&quot;&gt;Inventory API&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;The request is to delete a set of ads in bulk, as specified by a list of inventory reference IDs from the specified campaign. | |
 
 ### Return type
@@ -226,7 +220,7 @@ try {
 ## `bulkDeleteAdsByListingId()`
 
 ```php
-bulkDeleteAdsByListingId($campaignId, $contentType, $bulkDeleteAdRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkDeleteAdResponse
+bulkDeleteAdsByListingId($campaignId, $bulkDeleteAdRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkDeleteAdResponse
 ```
 
 
@@ -254,11 +248,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the eBay-assigned identifier of the ad campaign for which to delete a set of ads.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkDeleteAdRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkDeleteAdRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkDeleteAdRequest | This request object defines the fields for the <b>bulkDeleteAdsByListingId</b> request.
 
 try {
-    $result = $apiInstance->bulkDeleteAdsByListingId($campaignId, $contentType, $bulkDeleteAdRequest);
+    $result = $apiInstance->bulkDeleteAdsByListingId($campaignId, $bulkDeleteAdRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->bulkDeleteAdsByListingId: ', $e->getMessage(), PHP_EOL;
@@ -270,7 +263,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the eBay-assigned identifier of the ad campaign for which to delete a set of ads.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **bulkDeleteAdRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\BulkDeleteAdRequest**](../Model/BulkDeleteAdRequest.md)| This request object defines the fields for the &lt;b&gt;bulkDeleteAdsByListingId&lt;/b&gt; request. | |
 
 ### Return type
@@ -293,7 +285,7 @@ try {
 ## `bulkUpdateAdsBidByInventoryReference()`
 
 ```php
-bulkUpdateAdsBidByInventoryReference($campaignId, $contentType, $bulkCreateAdsByInventoryReferenceRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateAdsByInventoryReferenceResponse
+bulkUpdateAdsBidByInventoryReference($campaignId, $bulkCreateAdsByInventoryReferenceRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateAdsByInventoryReferenceResponse
 ```
 
 
@@ -321,11 +313,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to update the bid percentage for a set of ads.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkCreateAdsByInventoryReferenceRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdsByInventoryReferenceRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdsByInventoryReferenceRequest | This request object defines the fields for the <b>BulkCreateAdsByInventoryReference</b> request.
 
 try {
-    $result = $apiInstance->bulkUpdateAdsBidByInventoryReference($campaignId, $contentType, $bulkCreateAdsByInventoryReferenceRequest);
+    $result = $apiInstance->bulkUpdateAdsBidByInventoryReference($campaignId, $bulkCreateAdsByInventoryReferenceRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->bulkUpdateAdsBidByInventoryReference: ', $e->getMessage(), PHP_EOL;
@@ -337,7 +328,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to update the bid percentage for a set of ads.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **bulkCreateAdsByInventoryReferenceRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdsByInventoryReferenceRequest**](../Model/BulkCreateAdsByInventoryReferenceRequest.md)| This request object defines the fields for the &lt;b&gt;BulkCreateAdsByInventoryReference&lt;/b&gt; request. | |
 
 ### Return type
@@ -360,7 +350,7 @@ try {
 ## `bulkUpdateAdsBidByListingId()`
 
 ```php
-bulkUpdateAdsBidByListingId($campaignId, $contentType, $bulkCreateAdRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkAdUpdateResponse
+bulkUpdateAdsBidByListingId($campaignId, $bulkCreateAdRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkAdUpdateResponse
 ```
 
 
@@ -388,11 +378,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to update the bid percentage for a set of ads.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkCreateAdRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdRequest | This request object defines the fields for the <b>BulkCreateAdsByListingId</b> request.
 
 try {
-    $result = $apiInstance->bulkUpdateAdsBidByListingId($campaignId, $contentType, $bulkCreateAdRequest);
+    $result = $apiInstance->bulkUpdateAdsBidByListingId($campaignId, $bulkCreateAdRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->bulkUpdateAdsBidByListingId: ', $e->getMessage(), PHP_EOL;
@@ -404,7 +393,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to update the bid percentage for a set of ads.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **bulkCreateAdRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdRequest**](../Model/BulkCreateAdRequest.md)| This request object defines the fields for the &lt;b&gt;BulkCreateAdsByListingId&lt;/b&gt; request. | |
 
 ### Return type
@@ -427,12 +415,12 @@ try {
 ## `bulkUpdateAdsStatus()`
 
 ```php
-bulkUpdateAdsStatus($campaignId, $contentType, $bulkUpdateAdStatusRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkAdUpdateStatusResponse
+bulkUpdateAdsStatus($campaignId, $bulkUpdateAdStatusRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkAdUpdateStatusResponse
 ```
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method works with listings created with either the <a href= \"/Devzone/XML/docs/Reference/eBay/index.html\">Trading API</a> or the <a href=\"/api-docs/sell/inventory/resources/methods\">Inventory API</a>.<br /><br />This method updates the status of ads in bulk.<br /><br />Specify the <b>campaign_id</b> you want to update as a URI parameter, and configure the <b>adGroupStatus</b> in the request payload.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method works with listings created with either the <a href= \"/Devzone/XML/docs/Reference/eBay/index.html\">Trading API</a> or the <a href=\"/api-docs/sell/inventory/resources/methods\">Inventory API</a>.<br /><br />This method updates the status of ads in bulk.<br /><br />Specify the <b>campaign_id</b> you want to update as a URI parameter, and configure the <b>adGroupStatus</b> in the request payload.
 
 ### Example
 
@@ -455,11 +443,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign associated with the ad statuses being updated.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkUpdateAdStatusRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateAdStatusRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateAdStatusRequest | The bulk request to update the ads.
 
 try {
-    $result = $apiInstance->bulkUpdateAdsStatus($campaignId, $contentType, $bulkUpdateAdStatusRequest);
+    $result = $apiInstance->bulkUpdateAdsStatus($campaignId, $bulkUpdateAdStatusRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->bulkUpdateAdsStatus: ', $e->getMessage(), PHP_EOL;
@@ -471,7 +458,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign associated with the ad statuses being updated.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **bulkUpdateAdStatusRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateAdStatusRequest**](../Model/BulkUpdateAdStatusRequest.md)| The bulk request to update the ads. | |
 
 ### Return type
@@ -494,12 +480,12 @@ try {
 ## `bulkUpdateAdsStatusByListingId()`
 
 ```php
-bulkUpdateAdsStatusByListingId($campaignId, $contentType, $bulkUpdateAdStatusByListingIdRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkAdUpdateStatusByListingIdResponse
+bulkUpdateAdsStatusByListingId($campaignId, $bulkUpdateAdStatusByListingIdRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkAdUpdateStatusByListingIdResponse
 ```
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method works with listings created with either the <a href=\"/Devzone/XML/docs/Reference/eBay/index.html\">Trading API</a> or the <a href=\"/api-docs/sell/inventory/resources/methods\">Inventory API</a>.<br /><br />The method updates the status of ads in bulk, based on listing ID values.<br /><br />Specify the <b>campaign_id</b> as a path parameter and supply a set of listing IDs with their updated <b>adStatus</b> values in the request body. An eBay listing ID is generated when a listing is created with the Trading API.<br /><br />Get the campaign IDs for a seller by calling <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> and call <a href=\"/api-docs/sell/marketing/resources/ad/methods/getAds\">getAds</a> to retrieve a list of seller inventory reference IDs.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method works with listings created with either the <a href=\"/Devzone/XML/docs/Reference/eBay/index.html\">Trading API</a> or the <a href=\"/api-docs/sell/inventory/resources/methods\">Inventory API</a>.<br /><br />The method updates the status of ads in bulk, based on listing ID values.<br /><br />Specify the <b>campaign_id</b> as a path parameter and supply a set of listing IDs with their updated <b>adStatus</b> values in the request body. An eBay listing ID is generated when a listing is created with the Trading API.<br /><br />Get the campaign IDs for a seller by calling <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> and call <a href=\"/api-docs/sell/marketing/resources/ad/methods/getAds\">getAds</a> to retrieve a list of seller inventory reference IDs.
 
 ### Example
 
@@ -522,11 +508,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign associated with the ads being updated.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkUpdateAdStatusByListingIdRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateAdStatusByListingIdRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateAdStatusByListingIdRequest | The bulk request to update ads.
 
 try {
-    $result = $apiInstance->bulkUpdateAdsStatusByListingId($campaignId, $contentType, $bulkUpdateAdStatusByListingIdRequest);
+    $result = $apiInstance->bulkUpdateAdsStatusByListingId($campaignId, $bulkUpdateAdStatusByListingIdRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->bulkUpdateAdsStatusByListingId: ', $e->getMessage(), PHP_EOL;
@@ -538,7 +523,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign associated with the ads being updated.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **bulkUpdateAdStatusByListingIdRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateAdStatusByListingIdRequest**](../Model/BulkUpdateAdStatusByListingIdRequest.md)| The bulk request to update ads. | |
 
 ### Return type
@@ -561,12 +545,12 @@ try {
 ## `createAdByListingId()`
 
 ```php
-createAdByListingId($campaignId, $contentType, $createAdRequest): object
+createAdByListingId($campaignId, $createAdRequest): object
 ```
 
 
 
-This method adds a listing to an existing Promoted Listings campaign using a <b>listingId</b> value generated by the <a href=\"/Devzone/XML/docs/Reference/eBay/index.html\" title=\"Trading API Reference\">Trading API</a> or <a href=\"/api-docs/sell/inventory/resources/methods\" title=\"Inventory API Reference\">Inventory API</a>, or using a value generated by an ad group ID. <p>For Promoted Listings Standard (PLS) campaigns using the Cost Per Sale (CPS) funding model, an ad may be directly created for the listing.</p><p>For the listing ID specified in the request, this method:</p>  <ul><li>Creates an ad for the listing.</li> <li>Sets the bid percentage (also known as the <i>ad rate</i>) for the ad.</li> <li>Associates the ad with the specified campaign.</li></ul>  <p>To create an ad for a listing, specify its <b>listingId</b>, plus the <b>bidPercentage</b> for the ad in the payload of the request. Specify the campaign to associate the ad with using the <b>campaign_id</b> path parameter. Listing IDs are generated by eBay when a seller creates listings with the Trading API.</p><p>For manual targeting Promoted Listings Advanced (PLA) campaigns using the Cost Per Click (CPC) funding model, an ad group must be created first. If no ad group has been created for the campaign, ads cannot be created.<br><br><span class=\"tablenote\"><b>Note:</b> Ad groups are not required when adding listings to a smart targeting campaign.</span></p><p>For the ad group specified in the request, this method associates the ad with the specified ad group.</p><p>To create an ad for an ad group, specify the name of the ad group in the payload of the request. Specify the campaign to associate the ads with using the <b>campaign_id</b> path parameter. Ad groups are generated using the <a href=\"/api-docs/sell/marketing/resources/adgroup/methods/createAdGroup\">createAdGroup</a> method.</p> <p>You can specify one or more ad groups per campaign.</p><p>Use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/createCampaign\">createCampaign</a> to create a new campaign and use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> to get a list of existing campaigns.</p><p>This call has no response payload. If the ad is successfully created, a <code>201 Created</code> HTTP status code and the <a href=\"/api-docs/sell/marketing/resources/ad/methods/getAd\">getAd</a> URI of the ad are returned in the location header.</p>
+This method adds a listing to an existing Promoted Listings campaign using a <b>listingId</b> value generated by the <a href=\"/Devzone/XML/docs/Reference/eBay/index.html\" title=\"Trading API Reference\">Trading API</a> or <a href=\"/api-docs/sell/inventory/resources/methods\" title=\"Inventory API Reference\">Inventory API</a>, or using a value generated by an ad group ID. <p>For general strategy campaigns using the Cost Per Sale (CPS) funding model, an ad may be directly created for the listing.</p><p>For the listing ID specified in the request, this method:</p>  <ul><li>Creates an ad for the listing.</li> <li>Sets the bid percentage (also known as the <i>ad rate</i>) for the ad.</li> <li>Associates the ad with the specified campaign.</li></ul>  <p>To create an ad for a listing, specify its <b>listingId</b>, plus the <b>bidPercentage</b> for the ad in the payload of the request. Specify the campaign to associate the ad with using the <b>campaign_id</b> path parameter. Listing IDs are generated by eBay when a seller creates listings with the Trading API.</p><p>For manual targeting priority strategy campaigns using the Cost Per Click (CPC) funding model, an ad group must be created first. If no ad group has been created for the campaign, ads cannot be created.<br><br><span class=\"tablenote\"><b>Note:</b> Ad groups are not required when adding listings to a smart targeting campaign.</span></p><p>For the ad group specified in the request, this method associates the ad with the specified ad group.</p><p>To create an ad for an ad group, specify the name of the ad group in the payload of the request. Specify the campaign to associate the ads with using the <b>campaign_id</b> path parameter. Ad groups are generated using the <a href=\"/api-docs/sell/marketing/resources/adgroup/methods/createAdGroup\">createAdGroup</a> method.</p> <p>You can specify one or more ad groups per campaign.</p><p>Use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/createCampaign\">createCampaign</a> to create a new campaign and use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> to get a list of existing campaigns.</p><p>This call has no response payload. If the ad is successfully created, a <code>201 Created</code> HTTP status code and the <a href=\"/api-docs/sell/marketing/resources/ad/methods/getAd\">getAd</a> URI of the ad are returned in the location header.</p>
 
 ### Example
 
@@ -589,11 +573,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to associate the newly created ad.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $createAdRequest = new \macropage\SDKs\ebay\rest\marketing\Model\CreateAdRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\CreateAdRequest | This request object defines the fields used in the <b>createAdByListingId</b> request.
 
 try {
-    $result = $apiInstance->createAdByListingId($campaignId, $contentType, $createAdRequest);
+    $result = $apiInstance->createAdByListingId($campaignId, $createAdRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->createAdByListingId: ', $e->getMessage(), PHP_EOL;
@@ -605,7 +588,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to associate the newly created ad.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **createAdRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\CreateAdRequest**](../Model/CreateAdRequest.md)| This request object defines the fields used in the &lt;b&gt;createAdByListingId&lt;/b&gt; request. | |
 
 ### Return type
@@ -628,12 +610,12 @@ try {
 ## `createAdsByInventoryReference()`
 
 ```php
-createAdsByInventoryReference($campaignId, $contentType, $createAdsByInventoryReferenceRequest): \macropage\SDKs\ebay\rest\marketing\Model\AdReferences
+createAdsByInventoryReference($campaignId, $createAdsByInventoryReferenceRequest): \macropage\SDKs\ebay\rest\marketing\Model\AdReferences
 ```
 
 
 
-This method adds a listing that is managed with the <a href=\"/api-docs/sell/inventory/resources/methods\" title=\"Inventory API Reference\">Inventory API</a> to an existing Promoted Listings campaign.<br /><br />For Promoted Listings Standard (PLS) campaigns using the Cost Per Sale (CPS) funding model, an ad may be directly created for the listing.<br /><br />For each listing specified in the request, this method:<br /><ul><li>Creates an ad for the listing.</li> <li>Sets the bid percentage (also known as the <i>ad rate</i>) for the ads created.</li> <li>Associates the created ad with the specified campaign.</li></ul><br />To create an ad for a listing, specify its <b>inventoryReferenceId</b> and <b>inventoryReferenceType</b>, plus the <b>bidPercentage</b> for the ad in the payload of the request. Specify the campaign to associate the ad with using the <b>campaign_id</b> path parameter.<br /><br /><span class=\"tablenote\"><b>Note:</b> This method only applies to the Cost Per Sale (CPS) funding model; it does not apply to the Cost Per Click (CPC) funding model. See <a href=\"/api-docs/sell/static/marketing/pl-overview.html#funding-model\">Funding Models</a> in the <i>Promoted Listings Playbook</i> for more information.</span><br /><br />Use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/createCampaign\">createCampaign</a> to create a new campaign and use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> to get a list of existing campaigns.
+This method adds a listing that is managed with the <a href=\"/api-docs/sell/inventory/resources/methods\" title=\"Inventory API Reference\">Inventory API</a> to an existing Promoted Listings campaign.<br /><br />For general strategy campaigns using the Cost Per Sale (CPS) funding model, an ad may be directly created for the listing.<br /><br />For each listing specified in the request, this method:<br /><ul><li>Creates an ad for the listing.</li> <li>Sets the bid percentage (also known as the <i>ad rate</i>) for the ads created.</li> <li>Associates the created ad with the specified campaign.</li></ul><br />To create an ad for a listing, specify its <b>inventoryReferenceId</b> and <b>inventoryReferenceType</b>, plus the <b>bidPercentage</b> for the ad in the payload of the request. Specify the campaign to associate the ad with using the <b>campaign_id</b> path parameter.<br /><br /><span class=\"tablenote\"><b>Note:</b> This method only applies to the Cost Per Sale (CPS) funding model; it does not apply to the Cost Per Click (CPC) funding model. See <a href=\"/api-docs/sell/static/marketing/pl-overview.html#funding-model\">Funding Models</a> in the <i>Promoted Listings Playbook</i> for more information.</span><br /><br />Use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/createCampaign\">createCampaign</a> to create a new campaign and use <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> to get a list of existing campaigns.
 
 ### Example
 
@@ -656,11 +638,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to associate the newly created ads.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $createAdsByInventoryReferenceRequest = new \macropage\SDKs\ebay\rest\marketing\Model\CreateAdsByInventoryReferenceRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\CreateAdsByInventoryReferenceRequest | This request object defines the fields used in the <b>createAdsByInventoryReference</b> request.
 
 try {
-    $result = $apiInstance->createAdsByInventoryReference($campaignId, $contentType, $createAdsByInventoryReferenceRequest);
+    $result = $apiInstance->createAdsByInventoryReference($campaignId, $createAdsByInventoryReferenceRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->createAdsByInventoryReference: ', $e->getMessage(), PHP_EOL;
@@ -672,7 +653,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to associate the newly created ads.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **createAdsByInventoryReferenceRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\CreateAdsByInventoryReferenceRequest**](../Model/CreateAdsByInventoryReferenceRequest.md)| This request object defines the fields used in the &lt;b&gt;createAdsByInventoryReference&lt;/b&gt; request. | |
 
 ### Return type
@@ -759,7 +739,7 @@ void (empty response body)
 ## `deleteAdsByInventoryReference()`
 
 ```php
-deleteAdsByInventoryReference($campaignId, $contentType, $deleteAdsByInventoryReferenceRequest): \macropage\SDKs\ebay\rest\marketing\Model\AdIds
+deleteAdsByInventoryReference($campaignId, $deleteAdsByInventoryReferenceRequest): \macropage\SDKs\ebay\rest\marketing\Model\AdIds
 ```
 
 
@@ -787,11 +767,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign associated with the ads being deleted.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $deleteAdsByInventoryReferenceRequest = new \macropage\SDKs\ebay\rest\marketing\Model\DeleteAdsByInventoryReferenceRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\DeleteAdsByInventoryReferenceRequest | This request object defines the fields for the <b>deleteAdsByInventoryReference</b> request.
 
 try {
-    $result = $apiInstance->deleteAdsByInventoryReference($campaignId, $contentType, $deleteAdsByInventoryReferenceRequest);
+    $result = $apiInstance->deleteAdsByInventoryReference($campaignId, $deleteAdsByInventoryReferenceRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->deleteAdsByInventoryReference: ', $e->getMessage(), PHP_EOL;
@@ -803,7 +782,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign associated with the ads being deleted.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **deleteAdsByInventoryReferenceRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\DeleteAdsByInventoryReferenceRequest**](../Model/DeleteAdsByInventoryReferenceRequest.md)| This request object defines the fields for the &lt;b&gt;deleteAdsByInventoryReference&lt;/b&gt; request. | |
 
 ### Return type
@@ -1031,7 +1009,7 @@ try {
 ## `updateBid()`
 
 ```php
-updateBid($adId, $campaignId, $contentType, $updateBidPercentageRequest)
+updateBid($adId, $campaignId, $updateBidPercentageRequest)
 ```
 
 
@@ -1060,11 +1038,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
 );
 $adId = 'adId_example'; // string | This path parameter specifies the unique identifier of the ad for which the bid percentage is being updated.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/ad/methods/getAds\" target=\"_blank\">getAds</a> method to retrieve ad IDs.
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign associated with the ad being updated.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $updateBidPercentageRequest = new \macropage\SDKs\ebay\rest\marketing\Model\UpdateBidPercentageRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\UpdateBidPercentageRequest | This type defines the fields for the <b>updateBid</b> request.
 
 try {
-    $apiInstance->updateBid($adId, $campaignId, $contentType, $updateBidPercentageRequest);
+    $apiInstance->updateBid($adId, $campaignId, $updateBidPercentageRequest);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->updateBid: ', $e->getMessage(), PHP_EOL;
 }
@@ -1076,7 +1053,6 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **adId** | **string**| This path parameter specifies the unique identifier of the ad for which the bid percentage is being updated.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/ad/methods/getAds\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getAds&lt;/a&gt; method to retrieve ad IDs. | |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign associated with the ad being updated.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **updateBidPercentageRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\UpdateBidPercentageRequest**](../Model/UpdateBidPercentageRequest.md)| This type defines the fields for the &lt;b&gt;updateBid&lt;/b&gt; request. | |
 
 ### Return type

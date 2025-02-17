@@ -15,12 +15,12 @@ All URIs are relative to https://api.ebay.com/sell/marketing/v1, except if the o
 ## `bulkCreateKeyword()`
 
 ```php
-bulkCreateKeyword($campaignId, $contentType, $bulkCreateKeywordRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateKeywordResponse
+bulkCreateKeyword($campaignId, $bulkCreateKeywordRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateKeywordResponse
 ```
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method adds keywords, in bulk, to an existing PLA ad group in a campaign that uses manual targeting.<br><br>This method also sets the CPC rate for each keyword, depending on the selected bidding strategy, as follows:<br><br><ul><li><code>FIXED</code>: If the seller provides a keyword bid, that bid value will be used.<br><br>If no bid is provided, the adgroup's default bid value will be used.</li><li><code>DYNAMIC</code>: The eBay suggested bid will be used.<br><br>If the seller passes in a value, a warning will be returned.</li></ul><br>In the request, supply the <b>campaign_id</b> as a path parameter.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a specified seller.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method adds keywords, in bulk, to an existing priority strategy ad group in a campaign that uses manual targeting.<br><br>This method also sets the CPC rate for each keyword, depending on the selected bidding strategy, as follows:<br><br><ul><li><code>FIXED</code>: If the seller provides a keyword bid, that bid value will be used.<br><br>If no bid is provided, the adgroup's default bid value will be used.</li><li><code>DYNAMIC</code>: The eBay suggested bid will be used.<br><br>If the seller passes in a value, a warning will be returned.</li></ul><br>In the request, supply the <b>campaign_id</b> as a path parameter.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a specified seller.
 
 ### Example
 
@@ -43,11 +43,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\KeywordApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which a set of keywords is being created.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkCreateKeywordRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateKeywordRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateKeywordRequest | A type that defines the fields for the bulk request to create keywords.
 
 try {
-    $result = $apiInstance->bulkCreateKeyword($campaignId, $contentType, $bulkCreateKeywordRequest);
+    $result = $apiInstance->bulkCreateKeyword($campaignId, $bulkCreateKeywordRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling KeywordApi->bulkCreateKeyword: ', $e->getMessage(), PHP_EOL;
@@ -59,7 +58,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which a set of keywords is being created.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **bulkCreateKeywordRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\BulkCreateKeywordRequest**](../Model/BulkCreateKeywordRequest.md)| A type that defines the fields for the bulk request to create keywords. | |
 
 ### Return type
@@ -82,12 +80,12 @@ try {
 ## `bulkUpdateKeyword()`
 
 ```php
-bulkUpdateKeyword($campaignId, $contentType, $bulkUpdateKeywordRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateKeywordResponse
+bulkUpdateKeyword($campaignId, $bulkUpdateKeywordRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateKeywordResponse
 ```
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method updates the bids and statuses of keywords, in bulk, for an existing PLA campaign.<br /><br />In the request, supply the <b>campaign_id</b> as a path parameter.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a specified seller.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method updates the bids and statuses of keywords, in bulk, for an existing priority strategy campaign.<br /><br />In the request, supply the <b>campaign_id</b> as a path parameter.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a specified seller.
 
 ### Example
 
@@ -110,11 +108,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\KeywordApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which a set of keywords is being updated. <br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkUpdateKeywordRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateKeywordRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateKeywordRequest | A type that defines the fields for the bulk request to update keywords.
 
 try {
-    $result = $apiInstance->bulkUpdateKeyword($campaignId, $contentType, $bulkUpdateKeywordRequest);
+    $result = $apiInstance->bulkUpdateKeyword($campaignId, $bulkUpdateKeywordRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling KeywordApi->bulkUpdateKeyword: ', $e->getMessage(), PHP_EOL;
@@ -126,7 +123,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which a set of keywords is being updated. &lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **bulkUpdateKeywordRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateKeywordRequest**](../Model/BulkUpdateKeywordRequest.md)| A type that defines the fields for the bulk request to update keywords. | |
 
 ### Return type
@@ -149,12 +145,12 @@ try {
 ## `createKeyword()`
 
 ```php
-createKeyword($campaignId, $contentType, $createKeywordRequest): object
+createKeyword($campaignId, $createKeywordRequest): object
 ```
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method creates keywords using a specified campaign ID for an existing PLA campaign that uses manual targeting.<br /><br />In the request, supply the <b>campaign_id</b> as a path parameter.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/suggestKeywords\">suggestKeywords</a> method to retrieve a list of keyword ideas to be targeted for PLA campaigns, and call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a seller.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method creates keywords using a specified campaign ID for an existing priority strategy campaign that uses manual targeting.<br /><br />In the request, supply the <b>campaign_id</b> as a path parameter.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/suggestKeywords\">suggestKeywords</a> method to retrieve a list of keyword ideas to be targeted for priority strategy campaigns, and call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a seller.
 
 ### Example
 
@@ -177,11 +173,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\KeywordApi(
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which a keyword is being created. <br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $createKeywordRequest = new \macropage\SDKs\ebay\rest\marketing\Model\CreateKeywordRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\CreateKeywordRequest | A type that defines the fields for the request to create a keyword.
 
 try {
-    $result = $apiInstance->createKeyword($campaignId, $contentType, $createKeywordRequest);
+    $result = $apiInstance->createKeyword($campaignId, $createKeywordRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling KeywordApi->createKeyword: ', $e->getMessage(), PHP_EOL;
@@ -193,7 +188,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which a keyword is being created. &lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **createKeywordRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\CreateKeywordRequest**](../Model/CreateKeywordRequest.md)| A type that defines the fields for the request to create a keyword. | |
 
 ### Return type
@@ -221,7 +215,7 @@ getKeyword($campaignId, $keywordId): \macropage\SDKs\ebay\rest\marketing\Model\K
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method retrieves details on a specific keyword from an ad group within a PLA campaign that uses the Cost Per Click (CPC) funding model.<br /><br />In the request, specify the <b>campaign_id</b> and <b>keyword_id</b> as path parameters.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a seller and call the <a href=\"/api-docs/sell/marketing/resources/keyword/methods/getKeywords\">getKeywords</a> method to retrieve their keyword IDs.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method retrieves details on a specific keyword from an ad group within a priority strategy campaign that uses the Cost Per Click (CPC) funding model.<br /><br />In the request, specify the <b>campaign_id</b> and <b>keyword_id</b> as path parameters.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a seller and call the <a href=\"/api-docs/sell/marketing/resources/keyword/methods/getKeywords\">getKeywords</a> method to retrieve their keyword IDs.
 
 ### Example
 
@@ -286,7 +280,7 @@ getKeywords($campaignId, $adGroupIds, $keywordStatus, $limit, $offset): \macropa
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method can be used to retrieve all of the keywords for ad groups in PLA campaigns that use the Cost Per Click (CPC) funding model.<br /><br />In the request, specify the <b>campaign_id</b> as a path parameter. If one or more <b>ad_group_ids</b> are passed in the request body, the keywords for those ad groups will be returned. If <b>ad_group_ids</b> are not passed in the response body, the call will return all the keywords in the campaign.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a seller.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method can be used to retrieve all of the keywords for ad groups in priority strategy campaigns that use the Cost Per Click (CPC) funding model.<br /><br />In the request, specify the <b>campaign_id</b> as a path parameter. If one or more <b>ad_group_ids</b> are passed in the request body, the keywords for those ad groups will be returned. If <b>ad_group_ids</b> are not passed in the response body, the call will return all the keywords in the campaign.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a seller.
 
 ### Example
 
@@ -352,12 +346,12 @@ try {
 ## `updateKeyword()`
 
 ```php
-updateKeyword($campaignId, $keywordId, $contentType, $updateKeywordRequest): \macropage\SDKs\ebay\rest\marketing\Model\UpdateKeywordResponse
+updateKeyword($campaignId, $keywordId, $updateKeywordRequest): \macropage\SDKs\ebay\rest\marketing\Model\UpdateKeywordResponse
 ```
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method updates keywords using a campaign ID and keyword ID for an existing PLA campaign.<br /><br />In the request, specify the <b>campaign_id</b> and <b>keyword_id</b> as path parameters.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a seller and call the <a href=\"/api-docs/sell/marketing/resources/keyword/methods/getKeywords\">getKeywords</a> method to retrieve their keyword IDs.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method updates keywords using a campaign ID and keyword ID for an existing priority strategy campaign.<br /><br />In the request, specify the <b>campaign_id</b> and <b>keyword_id</b> as path parameters.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a seller and call the <a href=\"/api-docs/sell/marketing/resources/keyword/methods/getKeywords\">getKeywords</a> method to retrieve their keyword IDs.
 
 ### Example
 
@@ -381,11 +375,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\KeywordApi(
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign associated with the keyword being updated. <br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
 $keywordId = 'keywordId_example'; // string | This path parameter specifies the unique identifier of the keyword being updated.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/keyword/methods/getKeywords\" target=\"_blank\">getKeywords</a> method to retrieve keyword IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $updateKeywordRequest = new \macropage\SDKs\ebay\rest\marketing\Model\UpdateKeywordRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\UpdateKeywordRequest | A type that defines the fields for the request to update a keyword.
 
 try {
-    $result = $apiInstance->updateKeyword($campaignId, $keywordId, $contentType, $updateKeywordRequest);
+    $result = $apiInstance->updateKeyword($campaignId, $keywordId, $updateKeywordRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling KeywordApi->updateKeyword: ', $e->getMessage(), PHP_EOL;
@@ -398,7 +391,6 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignId** | **string**| This path parameter specifies the unique eBay-assigned identifier of the ad campaign associated with the keyword being updated. &lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getCampaigns&lt;/a&gt; method to retrieve campaign IDs. | |
 | **keywordId** | **string**| This path parameter specifies the unique identifier of the keyword being updated.&lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/keyword/methods/getKeywords\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getKeywords&lt;/a&gt; method to retrieve keyword IDs. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **updateKeywordRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\UpdateKeywordRequest**](../Model/UpdateKeywordRequest.md)| A type that defines the fields for the request to update a keyword. | |
 
 ### Return type

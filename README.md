@@ -1,3 +1,9 @@
+> ### Important Notice
+>
+> Before using this SDK, you **must** modify the OpenAPI specification file (`sell_marketing_v1_oas3.yaml`) to remove duplicate `Content-Type` headers.
+> Run the `fix_openapi_schema_file` script to apply these changes and review the fixed file carefully.
+> If the output is correct, update the original specification file accordingly.
+
 # sdk-ebay-rest-marketing
 
 <p>The <i>Marketing API </i> offers two platforms that sellers can use to promote and advertise their products:</p> <ul><li><b>Promoted Listings</b> is an eBay ad service that lets sellers set up <i>ad campaigns </i> for the products they want to promote. eBay displays the ads in search results and in other marketing modules as <b>SPONSORED</b> listings. If an item in a Promoted Listings campaign sells, the seller is assessed a Promoted Listings fee, which is a seller-specified percentage applied to the sales price. For complete details, refer to the <a href=\"/api-docs/sell/static/marketing/pl-landing.html\">Promoted Listings playbook</a>.</li><li><b>Promotions Manager</b> gives sellers a way to offer discounts on specific items as a way to attract buyers to their inventory. Sellers can set up discounts (such as \"20% off\" and other types of offers) on specific items or on an entire customer order. To further attract buyers, eBay prominently displays promotion <i>teasers</i> throughout buyer flows. For complete details, see <a href=\"/api-docs/sell/static/marketing/promotions-manager.html\">Promotions Manager</a>.</li></ul>  <p><b>Marketing reports</b>, on both the Promoted Listings and Promotions Manager platforms, give sellers information that shows the effectiveness of their marketing strategies. The data gives sellers the ability to review and fine tune their marketing efforts.</p><p><b>Store Email Campaign</b> allows sellers to create and send email campaigns to customers who have signed up to receive their newsletter. For more information on email campaigns, see <a href=\"/api-docs/sell/static/marketing/store-email-campaigns.html#email-campain-types\" target=\"_blank\">Store Email Campaigns</a>.<p class=\"tablenote\"><b>Important!</b> Sellers must have an active eBay Store subscription, and they must accept the <b>Terms and Conditions</b> before they can make requests to these APIs in the Production environment. There are also site-specific listings requirements and restrictions associated with these marketing tools, as listed in the \"requirements and restrictions\" sections for <a href=\"/api-docs/sell/marketing/static/overview.html#PL-requirements\">Promoted Listings</a> and <a href=\"/api-docs/sell/marketing/static/overview.html#PM-requirements\">Promotions Manager</a>.</p> <p>The table below lists all the Marketing API calls grouped by resource.</p>
@@ -7,7 +13,8 @@
 
 ### Requirements
 
-PHP 8.0 and later.
+PHP 7.4 and later.
+Should also work with PHP 8.0.
 
 ### Composer
 
@@ -51,18 +58,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: api_auth
 $config = macropage\SDKs\ebay\rest\marketing\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$apiInstance = new macropage\SDKs\ebay\rest\marketing\API\AdApi(
+
+$apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\AdApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $campaignId = 'campaignId_example'; // string | This path parameter specifies the unique eBay-assigned identifier of the ad campaign for which to associated the ads being created.<br><br> Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\" target=\"_blank\">getCampaigns</a> method to retrieve campaign IDs.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkCreateAdsByInventoryReferenceRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdsByInventoryReferenceRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateAdsByInventoryReferenceRequest | The container for the bulk request to create ads for eBay inventory reference IDs. eBay inventory reference IDs are seller-defined IDs used by theInventory API.
 
 try {
-    $result = $apiInstance->bulkCreateAdsByInventoryReference($campaignId, $contentType, $bulkCreateAdsByInventoryReferenceRequest);
+    $result = $apiInstance->bulkCreateAdsByInventoryReference($campaignId, $bulkCreateAdsByInventoryReferenceRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdApi->bulkCreateAdsByInventoryReference: ', $e->getMessage(), PHP_EOL;
@@ -119,6 +126,7 @@ Class | Method | HTTP request | Description
 *CampaignApi* | [**setupQuickCampaign**](docs/Api/CampaignApi.md#setupquickcampaign) | **POST** /ad_campaign/setup_quick_campaign | 
 *CampaignApi* | [**suggestBudget**](docs/Api/CampaignApi.md#suggestbudget) | **GET** /ad_campaign/suggest_budget | 
 *CampaignApi* | [**suggestItems**](docs/Api/CampaignApi.md#suggestitems) | **GET** /ad_campaign/{campaign_id}/suggest_items | 
+*CampaignApi* | [**suggestMaxCpc**](docs/Api/CampaignApi.md#suggestmaxcpc) | **POST** /ad_campaign/suggest_max_cpc | 
 *CampaignApi* | [**updateAdRateStrategy**](docs/Api/CampaignApi.md#updateadratestrategy) | **POST** /ad_campaign/{campaign_id}/update_ad_rate_strategy | 
 *CampaignApi* | [**updateBiddingStrategy**](docs/Api/CampaignApi.md#updatebiddingstrategy) | **POST** /ad_campaign/{campaign_id}/update_bidding_strategy | 
 *CampaignApi* | [**updateCampaignBudget**](docs/Api/CampaignApi.md#updatecampaignbudget) | **POST** /ad_campaign/{campaign_id}/update_campaign_budget | 
@@ -280,6 +288,8 @@ Class | Method | HTTP request | Description
 - [SelectedInventoryDiscount](docs/Model/SelectedInventoryDiscount.md)
 - [SelectionRule](docs/Model/SelectionRule.md)
 - [SuggestBudgetResponse](docs/Model/SuggestBudgetResponse.md)
+- [SuggestMaxCpcRequest](docs/Model/SuggestMaxCpcRequest.md)
+- [SuggestMaxCpcResponse](docs/Model/SuggestMaxCpcResponse.md)
 - [SuggestedBids](docs/Model/SuggestedBids.md)
 - [SuggestedKeywords](docs/Model/SuggestedKeywords.md)
 - [SummaryReportResponse](docs/Model/SummaryReportResponse.md)
@@ -344,7 +354,7 @@ vendor/bin/phpunit
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `v1.21.0`
-    - Package version: `1.21.0`
-    - Generator version: `7.4.0`
+- API version: `v1.22.0`
+    - Package version: `1.22.0`
+    - Generator version: `7.11.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

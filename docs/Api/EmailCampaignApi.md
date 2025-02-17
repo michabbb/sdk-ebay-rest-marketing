@@ -17,7 +17,7 @@ All URIs are relative to https://api.ebay.com/sell/marketing/v1, except if the o
 ## `createEmailCampaign()`
 
 ```php
-createEmailCampaign($xEBAYCMARKETPLACEID, $contentType, $createEmailCampaignRequest): \macropage\SDKs\ebay\rest\marketing\Model\CreateEmailCampaignResponse
+createEmailCampaign($xEBAYCMARKETPLACEID, $createEmailCampaignRequest): \macropage\SDKs\ebay\rest\marketing\Model\CreateEmailCampaignResponse
 ```
 
 
@@ -45,11 +45,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\EmailCampaignApi(
     $config
 );
 $xEBAYCMARKETPLACEID = 'xEBAYCMARKETPLACEID_example'; // string | The eBay marketplace that the email campaign interfaces with.<br><br>eBay marketplaces correspond to geographical regions or large submarkets of regions. For example, <code>EBAY-US</code> corresponds to the United States market.<br><br>See <a href=\"/api-docs/sell/marketing/types/ba:MarketplaceIdEnum\" target=\"_blank\">MarketplaceIdEnum</a> for supported values.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $createEmailCampaignRequest = new \macropage\SDKs\ebay\rest\marketing\Model\CreateEmailCampaignRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\CreateEmailCampaignRequest | Create a new email campaign request.
 
 try {
-    $result = $apiInstance->createEmailCampaign($xEBAYCMARKETPLACEID, $contentType, $createEmailCampaignRequest);
+    $result = $apiInstance->createEmailCampaign($xEBAYCMARKETPLACEID, $createEmailCampaignRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailCampaignApi->createEmailCampaign: ', $e->getMessage(), PHP_EOL;
@@ -61,7 +60,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **xEBAYCMARKETPLACEID** | **string**| The eBay marketplace that the email campaign interfaces with.&lt;br&gt;&lt;br&gt;eBay marketplaces correspond to geographical regions or large submarkets of regions. For example, &lt;code&gt;EBAY-US&lt;/code&gt; corresponds to the United States market.&lt;br&gt;&lt;br&gt;See &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/types/ba:MarketplaceIdEnum\&quot; target&#x3D;\&quot;_blank\&quot;&gt;MarketplaceIdEnum&lt;/a&gt; for supported values. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **createEmailCampaignRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\CreateEmailCampaignRequest**](../Model/CreateEmailCampaignRequest.md)| Create a new email campaign request. | |
 
 ### Return type
@@ -474,7 +472,7 @@ try {
 ## `updateEmailCampaign()`
 
 ```php
-updateEmailCampaign($emailCampaignId, $contentType, $updateCampaignRequest): \macropage\SDKs\ebay\rest\marketing\Model\UpdateEmailCampaignResponse
+updateEmailCampaign($emailCampaignId, $updateCampaignRequest): \macropage\SDKs\ebay\rest\marketing\Model\UpdateEmailCampaignResponse
 ```
 
 
@@ -502,11 +500,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\EmailCampaignApi(
     $config
 );
 $emailCampaignId = 'emailCampaignId_example'; // string | This path parameter specifies the unique eBay assigned identifier for the email campaign being updated.<br><br>Use the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getEmailCampaigns\" target=\"_blank\">getEmailCampaigns</a> method to retrieve a list of email campaign IDs for a seller.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $updateCampaignRequest = new \macropage\SDKs\ebay\rest\marketing\Model\UpdateCampaignRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\UpdateCampaignRequest | update email campaign request
 
 try {
-    $result = $apiInstance->updateEmailCampaign($emailCampaignId, $contentType, $updateCampaignRequest);
+    $result = $apiInstance->updateEmailCampaign($emailCampaignId, $updateCampaignRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailCampaignApi->updateEmailCampaign: ', $e->getMessage(), PHP_EOL;
@@ -518,7 +515,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **emailCampaignId** | **string**| This path parameter specifies the unique eBay assigned identifier for the email campaign being updated.&lt;br&gt;&lt;br&gt;Use the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/campaign/methods/getEmailCampaigns\&quot; target&#x3D;\&quot;_blank\&quot;&gt;getEmailCampaigns&lt;/a&gt; method to retrieve a list of email campaign IDs for a seller. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **updateCampaignRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\UpdateCampaignRequest**](../Model/UpdateCampaignRequest.md)| update email campaign request | |
 
 ### Return type

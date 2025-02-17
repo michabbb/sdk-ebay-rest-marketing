@@ -15,7 +15,7 @@ getPromotionSummaryReport($marketplaceId): \macropage\SDKs\ebay\rest\marketing\M
 
 
 
-This method generates a report that summarizes the seller's promotions for the specified eBay marketplace. The report returns information on <code>RUNNING</code>, <code>PAUSED</code>, and <code>ENDED</code> promotions (deleted reports are not returned) and summarizes the seller's campaign performance for all promotions on a given site.  <br><br>For information about summary reports, see <a href=\"/api-docs/sell/static/marketing/pm-summary-report.html\">Reading the item promotion Summary report</a>.
+<span class=\"tablenote\"><b>Note:</b> As of July 8th 2024, <i>promotions</i> are now being referred to as <i>discounts</i> on Seller Hub and eBay help pages. Sell Marketing API documentation has been updated to reflect this product name change, but note that no API interface changes have been made.</span><br>This method generates a report that summarizes the seller's discounts for the specified eBay marketplace. The report returns information on <code>RUNNING</code>, <code>PAUSED</code>, and <code>ENDED</code> discounts (deleted reports are not returned) and summarizes the seller's campaign performance for all discounts on a given site.  <br><br>For information about summary reports, see <a href=\"/api-docs/sell/static/marketing/pm-summary-report.html\">Reading the item discount Summary report</a>.
 
 ### Example
 
@@ -37,7 +37,7 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\PromotionSummaryReport
     new GuzzleHttp\Client(),
     $config
 );
-$marketplaceId = 'marketplaceId_example'; // string | This parameter specifies the eBay marketplace ID of the site for which you want a promotions summary report.<br><br>See <a href=\"/api-docs/sell/marketing/types/ba:MarketplaceIdEnum\">MarketplaceIdEnum</a> for supported Marketplace ID values.
+$marketplaceId = 'marketplaceId_example'; // string | This parameter specifies the eBay marketplace ID of the site for which you want a discount summary report.<br><br>See <a href=\"/api-docs/sell/marketing/types/ba:MarketplaceIdEnum\">MarketplaceIdEnum</a> for supported Marketplace ID values.
 
 try {
     $result = $apiInstance->getPromotionSummaryReport($marketplaceId);
@@ -51,7 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **marketplaceId** | **string**| This parameter specifies the eBay marketplace ID of the site for which you want a promotions summary report.&lt;br&gt;&lt;br&gt;See &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/types/ba:MarketplaceIdEnum\&quot;&gt;MarketplaceIdEnum&lt;/a&gt; for supported Marketplace ID values. | |
+| **marketplaceId** | **string**| This parameter specifies the eBay marketplace ID of the site for which you want a discount summary report.&lt;br&gt;&lt;br&gt;See &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/types/ba:MarketplaceIdEnum\&quot;&gt;MarketplaceIdEnum&lt;/a&gt; for supported Marketplace ID values. | |
 
 ### Return type
 

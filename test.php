@@ -1,31 +1,40 @@
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
+include 'vendor/autoload.php';
 
-use macropage\SDKs\ebay\rest\marketing\API\ItemPromotionApi;
-use macropage\SDKs\ebay\rest\marketing\API\PromotionApi;
+use GuzzleHttp\Client;
+use macropage\SDKs\ebay\rest\marketing\API\{CampaignApi, ItemPromotionApi, PromotionApi};
 use macropage\SDKs\ebay\rest\marketing\Configuration;
 
 // Configure OAuth2 access token for authorization: api_auth
-$config = Configuration::getDefaultConfiguration()->setAccessToken('xxxxxxxxxxxxxxx');
+$config = Configuration::getDefaultConfiguration()->setAccessToken($_ENV['EBAY_ACCESS_TOKEN'] ?? 'xxxxxxxxxxx');
 
-$apiInstance = new PromotionApi(
-    new GuzzleHttp\Client(),
-    $config
-);
+$client           = new Client();
+$apiPromotion     = new PromotionApi($client, $config);
+$apiCampaign      = new CampaignApi($client, $config);
+$apiItemPromotion = new ItemPromotionApi($client, $config);
+
+$marketplaceId = 'EBAY_DE';
+
 try {
-    $result = $apiInstance->getPromotions('EBAY_DE');
+    $result = $apiPromotion->getPromotions($marketplaceId);
     print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling PromotionApi->getPromotions: ', $e->getMessage(), PHP_EOL;
+} catch (\Exception $e) {
+    echo "Exception when calling PromotionApi->getPromotions: {$e->getMessage()}\n";
+    echo "Stack trace: {$e->getTraceAsString()}\n";
 }
 
-$apiInstance = new ItemPromotionApi(
-    new GuzzleHttp\Client(),
-    $config
-);
 try {
-    $result = $apiInstance->getItemPromotion('xxxxxxxxx@EBAY_DE');
+    $result = $apiCampaign->getCampaigns();
     print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ItemPromotionApi->getItemPromotion: ', $e->getMessage(), PHP_EOL;
+} catch (\Exception $e) {
+    echo "Exception when calling CampaignApi->getCampaigns: {$e->getMessage()}\n";
+    echo "Stack trace: {$e->getTraceAsString()}\n";
+}
+
+try {
+    $result = $apiItemPromotion->getItemPromotion('xxxxxxxxx@EBAY_DE');
+    print_r($result);
+} catch (\Exception $e) {
+    echo "Exception when calling ItemPromotionApi->getItemPromotion: {$e->getMessage()}\n";
+    echo "Stack trace: {$e->getTraceAsString()}\n";
 }

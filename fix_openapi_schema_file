@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Script to fix duplicate Content-Type headers in an OpenAPI schema file.
+# Run this script from within the directory containing the schema file.
+
+# Filename of the OpenAPI Specification
+ORIGINAL_FILE="sell_marketing_v1_oas3.txt"
+TEMP_FILE="$ORIGINAL_FILE.tmp"
+FIXED_FILE="$ORIGINAL_FILE.fixed"
+
+# Number of lines to delete after finding the search pattern
+LINES_TO_DELETE=5
+
+# Check if the original file exists
+if [ ! -f "$ORIGINAL_FILE" ]; then
+  echo "Error: File '$ORIGINAL_FILE' not found."
+  exit 1
+fi
+
+# Copy the original file
+if ! cp "$ORIGINAL_FILE" "$TEMP_FILE"; then
+  echo "Error: Failed to copy '$ORIGINAL_FILE' to '$TEMP_FILE'."
+  exit 1
+fi
+
+# Initialize a flag
+delete_block=0
+
+while IFS= read -r line; do
+  # Check if we should delete a block
+  if [ $delete_block -gt 0 ]; then
+    # Decrement the counter and skip the line
+    ((delete_block--))
+    echo "Skipping line (part of the block to delete): $line"
+    continue
+  fi
+
+  # Check if the current line contains the search text
+  if [[ "$line" == *"  - name: Content-Type"* ]]; then
+    echo "Deleting line and the next $LINES_TO_DELETE lines: $line"
+    # Set the flag to delete and the counter
+    delete_block=$LINES_TO_DELETE
+    continue  # Skip the current line
+  fi
+
+  # If no deletion condition applies, output the line
+  echo "$line" >> "$FIXED_FILE"
+done < "$TEMP_FILE"
+
+# Cleanup: Remove the temporary file
+rm "$TEMP_FILE"
+
+echo "Potentially duplicate Content-Type headers have been removed. Please check the file '$FIXED_FILE' carefully."
+echo "If the new file is correct, run the following command: mv \"$FIXED_FILE\" \"$ORIGINAL_FILE\""

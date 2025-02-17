@@ -15,12 +15,12 @@ All URIs are relative to https://api.ebay.com/sell/marketing/v1, except if the o
 ## `bulkCreateNegativeKeyword()`
 
 ```php
-bulkCreateNegativeKeyword($contentType, $bulkCreateNegativeKeywordRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateNegativeKeywordResponse
+bulkCreateNegativeKeyword($bulkCreateNegativeKeywordRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateNegativeKeywordResponse
 ```
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method adds negative keywords, in bulk, to an existing ad group in a PLA campaign that uses manual targeting.<br /><br />Specify the <b>campaignId</b> and <b>adGroupId</b> in the request body, along with the <b>negativeKeywordText</b> and <b>negativeKeywordMatchType</b>.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a specified seller.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method adds negative keywords, in bulk, to an existing ad group in a priority strategy campaign that uses manual targeting.<br /><br />Specify the <b>campaignId</b> and <b>adGroupId</b> in the request body, along with the <b>negativeKeywordText</b> and <b>negativeKeywordMatchType</b>.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a specified seller.
 
 ### Example
 
@@ -42,11 +42,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\NegativeKeywordApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkCreateNegativeKeywordRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateNegativeKeywordRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkCreateNegativeKeywordRequest | A type that defines the fields for the bulk request to create negative keywords.
 
 try {
-    $result = $apiInstance->bulkCreateNegativeKeyword($contentType, $bulkCreateNegativeKeywordRequest);
+    $result = $apiInstance->bulkCreateNegativeKeyword($bulkCreateNegativeKeywordRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NegativeKeywordApi->bulkCreateNegativeKeyword: ', $e->getMessage(), PHP_EOL;
@@ -57,7 +56,6 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **bulkCreateNegativeKeywordRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\BulkCreateNegativeKeywordRequest**](../Model/BulkCreateNegativeKeywordRequest.md)| A type that defines the fields for the bulk request to create negative keywords. | |
 
 ### Return type
@@ -80,12 +78,12 @@ try {
 ## `bulkUpdateNegativeKeyword()`
 
 ```php
-bulkUpdateNegativeKeyword($contentType, $bulkUpdateNegativeKeywordRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateNegativeKeywordResponse
+bulkUpdateNegativeKeyword($bulkUpdateNegativeKeywordRequest): \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateNegativeKeywordResponse
 ```
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method updates the statuses of existing negative keywords, in bulk.<br /><br />Specify the <b>negativeKeywordId</b> and <b>negativeKeywordStatus</b> in the request body.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method updates the statuses of existing negative keywords, in bulk.<br /><br />Specify the <b>negativeKeywordId</b> and <b>negativeKeywordStatus</b> in the request body.
 
 ### Example
 
@@ -107,11 +105,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\NegativeKeywordApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $bulkUpdateNegativeKeywordRequest = new \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateNegativeKeywordRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateNegativeKeywordRequest | A type that defines the fields for the bulk request to update negative keyword statuses.
 
 try {
-    $result = $apiInstance->bulkUpdateNegativeKeyword($contentType, $bulkUpdateNegativeKeywordRequest);
+    $result = $apiInstance->bulkUpdateNegativeKeyword($bulkUpdateNegativeKeywordRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NegativeKeywordApi->bulkUpdateNegativeKeyword: ', $e->getMessage(), PHP_EOL;
@@ -122,7 +119,6 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **bulkUpdateNegativeKeywordRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\BulkUpdateNegativeKeywordRequest**](../Model/BulkUpdateNegativeKeywordRequest.md)| A type that defines the fields for the bulk request to update negative keyword statuses. | |
 
 ### Return type
@@ -145,12 +141,12 @@ try {
 ## `createNegativeKeyword()`
 
 ```php
-createNegativeKeyword($contentType, $createNegativeKeywordRequest): object
+createNegativeKeyword($createNegativeKeywordRequest): object
 ```
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method adds a negative keyword to an existing ad group in a PLA campaign that uses manual targeting.<br /><br />Specify the <b>campaignId</b> and <b>adGroupId</b> in the request body, along with the <b>negativeKeywordText</b> and <b>negativeKeywordMatchType</b>.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a specified seller.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method adds a negative keyword to an existing ad group in a priority strategy campaign that uses manual targeting.<br /><br />Specify the <b>campaignId</b> and <b>adGroupId</b> in the request body, along with the <b>negativeKeywordText</b> and <b>negativeKeywordMatchType</b>.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a specified seller.
 
 ### Example
 
@@ -172,11 +168,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\NegativeKeywordApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $createNegativeKeywordRequest = new \macropage\SDKs\ebay\rest\marketing\Model\CreateNegativeKeywordRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\CreateNegativeKeywordRequest | A type that defines the fields for the request to create a negative keyword.
 
 try {
-    $result = $apiInstance->createNegativeKeyword($contentType, $createNegativeKeywordRequest);
+    $result = $apiInstance->createNegativeKeyword($createNegativeKeywordRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NegativeKeywordApi->createNegativeKeyword: ', $e->getMessage(), PHP_EOL;
@@ -187,7 +182,6 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **createNegativeKeywordRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\CreateNegativeKeywordRequest**](../Model/CreateNegativeKeywordRequest.md)| A type that defines the fields for the request to create a negative keyword. | |
 
 ### Return type
@@ -215,7 +209,7 @@ getNegativeKeyword($negativeKeywordId): \macropage\SDKs\ebay\rest\marketing\Mode
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method retrieves details on a specific negative keyword.<br /><br />In the request, specify the <b>negative_keyword_id</b> as a path parameter.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method retrieves details on a specific negative keyword.<br /><br />In the request, specify the <b>negative_keyword_id</b> as a path parameter.
 
 ### Example
 
@@ -278,7 +272,7 @@ getNegativeKeywords($adGroupIds, $campaignIds, $limit, $negativeKeywordStatus, $
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method can be used to retrieve all of the negative keywords for ad groups in PLA campaigns that use the Cost Per Click (CPC) funding model.<br /><br />The results can be filtered using the <b>campaign_ids</b>, <b>ad_group_ids</b>, and <b>negative_keyword_status</b> query parameters.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a seller.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method can be used to retrieve all of the negative keywords for ad groups in priority strategy campaigns that use the Cost Per Click (CPC) funding model.<br /><br />The results can be filtered using the <b>campaign_ids</b>, <b>ad_group_ids</b>, and <b>negative_keyword_status</b> query parameters.<br /><br />Call the <a href=\"/api-docs/sell/marketing/resources/campaign/methods/getCampaigns\">getCampaigns</a> method to retrieve a list of current campaign IDs for a seller.
 
 ### Example
 
@@ -344,12 +338,12 @@ try {
 ## `updateNegativeKeyword()`
 
 ```php
-updateNegativeKeyword($negativeKeywordId, $contentType, $updateNegativeKeywordRequest)
+updateNegativeKeyword($negativeKeywordId, $updateNegativeKeywordRequest)
 ```
 
 
 
-<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay Promoted Listings Advanced (PLA) program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Promoted Listings Advanced Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for PLA, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method updates the status of an existing negative keyword.<br /><br />Specify the <b>negative_keyword_id</b> as a path parameter, and specify the <b>negativeKeywordStatus</b> in the request body.
+<span class=\"tablenote\"><b>Note:</b> This method is only available for select partners who have been approved for the eBay priority strategy program. For information about how to request access to this program, refer to <a href=\"/api-docs/sell/static/marketing/pl-verify-eligibility.html#access-requests \" target=\"_blank \"> Priority Strategy Access Requests</a> in the Promoted Listings Playbook. To determine if a seller qualifies for priority strategy, use the <a href=\"/api-docs/sell/account/resources/advertising_eligibility/methods/getAdvertisingEligibility \" target=\"_blank \">getAdvertisingEligibility</a> method in Account API.</span><br />This method updates the status of an existing negative keyword.<br /><br />Specify the <b>negative_keyword_id</b> as a path parameter, and specify the <b>negativeKeywordStatus</b> in the request body.
 
 ### Example
 
@@ -372,11 +366,10 @@ $apiInstance = new macropage\SDKs\ebay\rest\marketing\Api\NegativeKeywordApi(
     $config
 );
 $negativeKeywordId = 'negativeKeywordId_example'; // string | The unique identifier for the negative keyword.<br /><br />This value is returned in the <b>Location</b> response header from the <a href=\"/api-docs/sell/marketing/resources/negative_keyword/methods/createNegativeKeyword\">createNegativeKeyword</a> method.
-$contentType = 'contentType_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $updateNegativeKeywordRequest = new \macropage\SDKs\ebay\rest\marketing\Model\UpdateNegativeKeywordRequest(); // \macropage\SDKs\ebay\rest\marketing\Model\UpdateNegativeKeywordRequest | A type that defines the fields for the request to update a negative keyword.
 
 try {
-    $apiInstance->updateNegativeKeyword($negativeKeywordId, $contentType, $updateNegativeKeywordRequest);
+    $apiInstance->updateNegativeKeyword($negativeKeywordId, $updateNegativeKeywordRequest);
 } catch (Exception $e) {
     echo 'Exception when calling NegativeKeywordApi->updateNegativeKeyword: ', $e->getMessage(), PHP_EOL;
 }
@@ -387,7 +380,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **negativeKeywordId** | **string**| The unique identifier for the negative keyword.&lt;br /&gt;&lt;br /&gt;This value is returned in the &lt;b&gt;Location&lt;/b&gt; response header from the &lt;a href&#x3D;\&quot;/api-docs/sell/marketing/resources/negative_keyword/methods/createNegativeKeyword\&quot;&gt;createNegativeKeyword&lt;/a&gt; method. | |
-| **contentType** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **updateNegativeKeywordRequest** | [**\macropage\SDKs\ebay\rest\marketing\Model\UpdateNegativeKeywordRequest**](../Model/UpdateNegativeKeywordRequest.md)| A type that defines the fields for the request to update a negative keyword. | |
 
 ### Return type

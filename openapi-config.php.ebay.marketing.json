@@ -2,7 +2,7 @@
   "packageName": "sdk-ebay-rest-marketing",
   "composerVendorName": "macropage",
   "composerProjectName": "sdk-ebay-rest-marketing",
-  "artifactVersion": "1.21.0",
+  "artifactVersion": "1.22.0",
   "invokerPackage": "macropage\\SDKs\\ebay\\rest\\marketing",
   "modelPackage": "Model",
   "apiPackage": "API",
