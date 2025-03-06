@@ -559,9 +559,11 @@ class CampaignApi
 
 
         if ($statusCode === 201) {
-            $headers = $response->getHeaders();
-            if (isset($headers['Location'])) {
-                return basename($headers['Location'][0]);
+
+            $headers = array_change_key_case($response->getHeaders(), CASE_LOWER);
+
+            if (isset($headers['location'])) {
+                return basename($headers['location'][0]);
             }
 
             throw new ApiException(
